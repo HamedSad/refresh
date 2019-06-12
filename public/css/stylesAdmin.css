@@ -1,0 +1,31 @@
+.wrapp{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.bathroomject{
+    width: 30%
+}
+
+.roomProject{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 30%
+}
+
+.newProject{
+    position:absolute;
+    top:20px;
+    right:20px;  
+}
+
+/*createProject*/
+
+.question{
+    width: 15%;
+    height: 15%;
+}
+
+img{
+    height: 15%;
+    width: 15%;
+}

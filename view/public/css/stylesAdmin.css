@@ -1,0 +1,25 @@
+/*createProject*/
+
+h2{
+    margin-top: 2em;
+    margin-bottom: 3em;
+    text-align: center;
+}
+
+.choice{
+    display: flex;
+    justify-content: space-around; 
+}
+
+.choice p{
+    font-size: 20px;
+    color: grey;
+    padding-top: 1em;
+    text-align: center;
+}
+
+.question img{
+    height: 10em;
+    width: 10em;
+}
+
