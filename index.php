@@ -28,6 +28,14 @@ if (isset($_GET['action'])){
     elseif($_GET['action'] == 'projectBath'){
         getOneBath(); 
     }
+    
+    elseif($_GET['action'] == 'delProjectRoom'){
+        if(isset($_GET['roomId']) && $_GET['roomId'] >0){
+            suppr($_GET['roomId']);
+        } else {
+            echo 'erreur lors de la suppression';
+        }
+    }
 }
 
 else {

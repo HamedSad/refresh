@@ -3,14 +3,20 @@
  $title= "Mon projet " . $projectRoom['roomProjectName'] ; ?>
 
 <h1>Mon projet</h1>
-<p>Récapitulatif du projet <?= $projectRoom['roomProjectName'] ;?> </p>
-
+<p>Récapitulatif du projet <?= $projectRoom['roomProjectName'] ;?> </p>  
+      
 <?php 
 
-    echo $projectRoom['roomProjectName'] . '<br>' ;
     echo 'Pièce de ' . $projectRoom['roomArea'] . ' m²<br>';
-    echo 'Hauteur sur plafont de ' . $projectRoom['roomHeight'] . 'm<br>';
-    echo 'Sol en ' . $projectRoom['roomGround'] . '<br>';
+    echo 'Hauteur sur plafond de ' . $projectRoom['roomHeight'] . 'm<br>';
+
+    if($projectRoom['roomGround'] == 5){
+        echo 'Sol divers <br>';
+    } else {
+        echo 'Sol en ' . $projectRoom['groundName'] . '<br><br>';
+        }
+
+    echo '<a class="btn btn-danger" href="index.php?action=delProjectRoom&amp;roomId=' . $projectRoom['roomId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>';
 
 ?>
 
@@ -24,9 +30,6 @@
     $surface = $perimetre * $projectRoom['roomHeight'];
     $surfaceRound = round($surface, 2);
     $totalLitre = round(($surface / 12)*2,2);
-
-    echo 'Périmètre de ' . $perimetre . 'm<br>';
-    echo'Surface de ' . $surfaceRound . 'm²<br>';
 
     echo 'Sur une base de 2 couches avec un pouvoir recouvrant de 10m²/litre, nous aurons besoin de :<br>' . $totalLitre . ' litres de peinture, soit ' ;
 

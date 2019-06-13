@@ -4,48 +4,40 @@
 
     setlocale(LC_TIME, 'fr_FR');
     $roomDate = strftime('%d/%m/%Y %H:%M:%S');
-    echo "Nous somme le : $roomDate";
-
-
-    $title= "Création de votre projet chambre"; ?>
+ 
+    $title = "Création de votre projet chambre"; ?>
 
     <div class="formAddRoom">
+        <h1>Création de votre projet chambre</h1>
         <form action="../index.php?action=addRoom&amp" method="post">   
-           
-            <?php
-            
-            echo $_SESSION['userName'];
-            echo $_SESSION['userId']; 
-            
-            ?>
             
             <div>
-                <label for="roomProjectName">Nom du projet</label><br>
-                <input type="text" id="roomProjectName" name="roomProjectName"><br><br>
+                <label for="roomProjectName">Nom du projet</label>
+                <input type="text" id="roomProjectName" name="roomProjectName" size="40" required><br><br>
             </div>
             
             <div>
-                <label for="roomArea">Superficie de votre chambre (en m²)</label><br>
-                <input type="text" id="roomArea" name="roomArea"><br><br>
+                <label for="roomArea">Superficie de votre chambre (en m²)</label>
+                <input type="number" id="roomArea" name="roomArea" size="5" step="0.01" required><br><br>
+            </div>
+            
+            <div>
+                <label for="roomHeight">Hauteur sur plafond (en m)</label>
+                <input type="number" id="bathroomArea" name="roomHeight" size="5" step="0.01" required><br><br>
             </div>
 
             <div>
-                <label for="roomGround">Type de sol</label><br>
-                <select id="roomGround" name="roomGround"><br>
+                <label for="roomGround">Type de sol</label>
+                <select id="roomGround" name="roomGround">
                     <option value = 1>Carrelage</option>
                     <option value = 2>Lino</option>
                     <option value = 3>Parquet</option>
                     <option value = 4>Moquette</option>
                     <option value = 5>Autre</option>
                 </select>
-            </div>
+            </div><br>       
             
-            <div>
-                <label for="roomHeight">Hauteur sur plafont (en m)</label><br>
-                <input type="text" id="bathroomArea" name="roomHeight"><br><br>
-            </div>
-            
-            <div>
+            <div class="userId">
                 <input type="text" id="userId" name="userId" value="
                 <?php echo $_SESSION['userId']; ?>" >
             </div>

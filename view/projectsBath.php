@@ -12,7 +12,7 @@
             if($dataBathroom['bathroomProjectId'] != 0){
                 
                 
-                echo ' -' . '<a href="index.php?action=projectBath&amp;bathId=' . $dataBathroom['bathroomProjectId'] . '">' . $dataBathroom['bathroomProjectName'] . ' édité le ' . $dataBathroom['bathroomDate'] . '</a><br>';
+                echo ' -' . '<a href="index.php?action=projectBath&amp;bathId=' . $dataBathroom['bathroomProjectId'] . '">' . $dataBathroom['bathroomProjectName'] . ' édité le ' . date("d/m/Y", strtotime($dataBathroom['bathroomDate'])) . '</a><br>';
             }
         }
     ?>

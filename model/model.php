@@ -44,7 +44,12 @@ function getProjectsBath(){
 
 function getProjectRoom($roomId){
     $db = dbConnect();
-    $req = $db->prepare('SELECT * FROM room WHERE userId = 1 and roomId = ?');   
+    $req = $db->prepare('SELECT * FROM room 
+    
+    INNER JOIN ground
+    On room.roomGround = ground.groundId
+    
+    WHERE userId = 1 and roomId = ?');   
     $req->execute(array($roomId));
     $projectRoom = $req->fetch();
     
@@ -67,6 +72,16 @@ function getProjectBath($bathId){
     $projectBath = $req->fetch();
     
     return $projectBath;
+}
+
+//Delete project room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function delProjectRoom($roomId){
+    $db = dbConnect();
+    
+    $sup = $db->prepare('DELETE FROM room where roomId = ?');
+    
+    $sup->execute(array($roomId));
+    return $sup;
 }
 
 //Add Bathroom project~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

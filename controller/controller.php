@@ -65,3 +65,9 @@ function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId,
     }
     
 }
+
+//Fonction supprimer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function suppr(){
+    $sup = delProjectRoom($_GET['roomId']);
+    header('Location: index.php');        
+}

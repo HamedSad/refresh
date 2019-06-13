@@ -13,7 +13,7 @@
         if($projectBath['groundId'] == 5){
             echo 'Sol divers <br>';
         } else {
-            echo 'Sol en ' . $projectBath['groundName'] . '<br>';
+            echo 'Sol en ' . $projectBath['groundName'] . '<br><br>';
         }
         
 
@@ -48,8 +48,6 @@
     $surface = $perimetre * $projectBath['bathroomHeight'];
     $surfaceRound = round($surface, 2);
     $totalLitre = round(($surface / 12)*2,2);
-    echo 'Périmètre de ' . $perimetre . 'm<br>';
-    echo'Surface de ' . $surfaceRound . 'm²<br>';
 
     echo 'Sur une base de 2 couches avec un pouvoir couvrant de 12m²/litre, nous aurons besoin de :<br>' . $totalLitre . ' litres de peinture, soit : ';
 

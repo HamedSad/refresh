@@ -78,3 +78,8 @@ img{
     height: 5em;
     width: 5em;
 }
+
+/*form bath*/
+form{
+    border: solid red;
+}

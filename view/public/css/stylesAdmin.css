@@ -1,9 +1,10 @@
-/*createProject*/
+/*createProject.php*/
 
-h2{
+.question h2{
     margin-top: 2em;
     margin-bottom: 3em;
     text-align: center;
+    color: grey;
 }
 
 .choice{
@@ -23,5 +24,52 @@ h2{
     width: 10em;
 }
 
+/*formBath.php*/
+form{
+    padding-top: 6em;
+    padding-right: 15em;;
+    padding-left: 3em;
+    font-family:sans-serif;
+    text-align: right;
+}
 
+.formAddBath{
+    border: solid red;
+    margin-right: 15%;
+}
 
+.formAddBath h1{
+    text-align: center;
+    color: grey;
+    padding-top: 2em;
+}
+
+.userId{
+    border: solid red;
+    display: none;
+}
+
+/*formRoom.php*/
+.formAddRoom{
+    border: solid red;
+    margin-right: 15%;
+}
+
+.formAddRoom h1{
+    text-align: center;
+    color: grey;
+    padding-top: 2em;
+}
+
+/*confirmation.php*/
+.confirmation{
+    padding: 5em 5em 0 5em;
+    color: grey;
+    font-size: 20px;
+}
+
+.confirmation img{
+    width: 8em;
+    height: 6em;
+    text-align: center;
+}
