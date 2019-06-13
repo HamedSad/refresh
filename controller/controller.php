@@ -31,14 +31,16 @@ function getOneBath(){
     $projectBath = getProjectBath($_GET['bathId']);
     $paint = getPainting();
     $wc = getToilets();
+    $shower = getShowers();
+    $bathtub = getBathtubs();
     require('view/bathView.php');
 }
 
 //Add bathroom Project~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-function addBath($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomWC, $bathroomShower, $bathroomBath, $userId){
+function addBath($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $userId, $bathroomDate){
     
-    $line = addBathroomProject($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomWC, $bathroomShower, $bathroomBath, $userId);
+    $line = addBathroomProject($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $userId, $bathroomDate);
     
     if($line === false){
         die('erreur addBath');
@@ -49,11 +51,10 @@ function addBath($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroom
     }
 }
 
-
 //Add room project~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId){
-    $line = addRoomProject($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId);
+function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate){
+    $line = addRoomProject($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate);
     
     if($line === false){
         die('erreur addRoom');

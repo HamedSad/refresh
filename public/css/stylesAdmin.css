@@ -28,4 +28,53 @@
 img{
     height: 15%;
     width: 15%;
+    
+}
+
+/*bathView*/
+.toilets{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-bottom: 7em;
+}
+
+.toilets2 img{
+    height: 5em;
+    width: 5em;
+}
+
+.shower{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-bottom: 7em;
+}
+.shower2 img{
+    height: 5em;
+    width: 5em;
+}
+
+.bathtub{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-bottom: 7em;
+}
+
+.bathtub2 img{
+    height: 5em;
+    width: 5em;
+}
+
+.paint{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-bottom: 7em;
+}
+
+.paint2 img{
+    height: 5em;
+    width: 5em;
 }

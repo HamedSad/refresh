@@ -3,6 +3,10 @@
 <?php 
 
     session_start();
+ 
+    setlocale(LC_TIME, 'fr_FR');
+    $bathroomDate = strftime('%d/%m/%Y %H:%M:%S');
+    echo "Nous somme le : $bathroomDate";
 ?>
 
 <?php $title= "Création de votre projet salle de bain"; ?>
@@ -38,6 +42,11 @@
                     <option value = 5>Autre</option>
                 </select>
             </div>
+            
+            <div>
+                <label for="bathroomHeight">Hauteur sur plafont (en m)</label><br>
+                <input type="text" id="bathroomHeight" name="bathroomHeight"><br><br>
+            </div>
 
             <div>
                 <label for="bathroomWC">Souhaitez-vous installer des WC ?</label><br>
@@ -67,9 +76,11 @@
                 <input type="text" id="userId" name="userId" value="
                 <?php echo $_SESSION['userId']; ?>" >
             </div>
+            
+            <input type="hidden" name="bathroomDate" value="<?php echo $bathroomDate ; ?>" >
 
             <div>
-                <input type="submit" />
+                <input type="submit" value="Valider">
             </div>
 
 

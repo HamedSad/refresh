@@ -27,7 +27,7 @@
                     
                     echo ' -' . 
                         
-                        '<a href="index.php?action=projectRoom&amp;roomId=' . $dataRoom['roomId'] . '">' . $dataRoom['roomProjectName'] . '</a><br>';
+                        '<a href="index.php?action=projectRoom&amp;roomId=' . $dataRoom['roomId'] . '">' . $dataRoom['roomProjectName'] . ' édité le ' . $dataRoom['roomDate'] . '</a><br>';
                     
                     
                     

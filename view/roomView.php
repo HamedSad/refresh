@@ -15,11 +15,7 @@
 
 <h1>Nos recommandations</h1>
 
-
-
-quantité de peinture requise : 
-
-
+<p>Quantité de peinture requise :</p> 
 
  <?php 
     
@@ -31,7 +27,7 @@ quantité de peinture requise :
 
     echo 'Sur une base de 2 couches avec un pouvoir recouvrant de 10m²/litre, nous aurons besoin de :<br>' . round(($surface / 10)*2,2) . ' litres de peinture, soit x pots' ;
 
-; ?>
+ ?>
 
 <br><br>Nos peintures : <br><br>
 

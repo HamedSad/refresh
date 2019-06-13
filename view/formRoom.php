@@ -3,6 +3,11 @@
 <?php 
 
     session_start();
+
+    setlocale(LC_TIME, 'fr_FR');
+    $roomDate = strftime('%d/%m/%Y %H:%M:%S');
+    echo "Nous somme le : $roomDate";
+
 ?>
 
 <?php $title= "Création de votre projet chambre"; ?>
@@ -47,9 +52,11 @@
                 <input type="text" id="userId" name="userId" value="
                 <?php echo $_SESSION['userId']; ?>" >
             </div>
+            
+            <input type="hidden" name="roomDate" value="<?php echo $roomDate ; ?>" >
 
             <div>
-                <input type="submit" />
+                <input type="submit" value="Valider">
             </div>
 
             
