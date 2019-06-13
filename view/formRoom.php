@@ -1,6 +1,4 @@
-<?php ob_start(); ?>
-
-<?php 
+<?php ob_start(); 
 
     session_start();
 
@@ -8,9 +6,8 @@
     $roomDate = strftime('%d/%m/%Y %H:%M:%S');
     echo "Nous somme le : $roomDate";
 
-?>
 
-<?php $title= "Création de votre projet chambre"; ?>
+    $title= "Création de votre projet chambre"; ?>
 
     <div class="formAddRoom">
         <form action="../index.php?action=addRoom&amp" method="post">   
@@ -61,6 +58,6 @@
 
             
             
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean(); 
 
-<?php require('template.php'); ?>
+require('template.php'); 

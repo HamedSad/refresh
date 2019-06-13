@@ -1,15 +1,13 @@
-<?php ob_start(); ?>
-
-<?php 
+<?php ob_start();
 
     session_start();
  
     setlocale(LC_TIME, 'fr_FR');
     $bathroomDate = strftime('%d/%m/%Y %H:%M:%S');
     echo "Nous somme le : $bathroomDate";
-?>
 
-<?php $title= "Création de votre projet salle de bain"; ?>
+
+    $title= "Création de votre projet salle de bain"; ?>
 
     <div class="formAddBath">
         <form action="../index.php?action=addBath&amp" method="post">   
@@ -87,6 +85,6 @@
         </form>
 
     </div>
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean();
 
-<?php require('template.php'); ?>
+    require('template.php');

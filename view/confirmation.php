@@ -1,11 +1,8 @@
-<?php ob_start(); ?>
-
-<?php 
+<?php ob_start();  
 
     session_start();
-?>
-
-<?php $title= "Confirmation"; ?>
+    
+    $title= "Confirmation"; ?>
     
     <div class="confirmation">
 
@@ -18,6 +15,6 @@
 
 
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean(); 
 
-<?php require('template.php'); ?>
+    require('template.php');

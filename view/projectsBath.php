@@ -1,6 +1,6 @@
-<?php ob_start(); ?>
+<?php ob_start(); 
 
-<?php $title= "Mes projets"; ?>
+    $title= "Mes projets"; ?>
 
     <div class="roomProject">
     <?php 
@@ -22,6 +22,6 @@
     <div class="newProject">
         <h1><a href="view/createProject.php">Nouveau projet <br></a></h1>
     </div>
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean(); 
 
-<?php require('template.php'); ?>
+    require('template.php');

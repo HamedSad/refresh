@@ -1,6 +1,6 @@
-<?php ob_start(); ?>
+<?php ob_start();
 
-<?php $title= "Mon projet " . $projectBath['bathroomProjectName'] ; ?>
+    $title= "Mon projet " . $projectBath['bathroomProjectName'] ; ?>
 
     <h1>Mon projet</h1>
     <p>Récapitulatif du projet <?= $projectBath['bathroomProjectName'] ;?> </p>
@@ -116,10 +116,6 @@
             echo '</div>';
     
 
-    ?>
-    
-    <?php include('painting.php'); ?>
+    $content = ob_get_clean();
 
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
+    require('template.php'); 

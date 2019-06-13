@@ -1,6 +1,6 @@
-<?php ob_start(); ?>
+<?php ob_start();
 
-<?php $title= "Création de votre projet"; ?>
+    $title= "Création de votre projet"; ?>
 
 <div class="question">
     
@@ -27,6 +27,5 @@
 
 </div>
 
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
+<?php $content = ob_get_clean(); 
+    require('template.php');
