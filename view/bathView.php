@@ -35,6 +35,7 @@
             echo 'Vous souhaitez installer une baignoire<br>';
         }
         
+        echo '<a class="btn btn-danger" href="index.php?action=delProjectBath&amp;bathroomProjectId=' . $projectBath['bathroomProjectId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>';
         
     ?>
 

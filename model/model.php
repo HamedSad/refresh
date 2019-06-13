@@ -21,7 +21,7 @@
 //    return $req;
 //    
 //}
-
+//Get projet Room et Bathroom
 function getProjectsRoom(){
    
     $db = dbConnect();
@@ -74,16 +74,6 @@ function getProjectBath($bathId){
     return $projectBath;
 }
 
-//Delete project room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function delProjectRoom($roomId){
-    $db = dbConnect();
-    
-    $sup = $db->prepare('DELETE FROM room where roomId = ?');
-    
-    $sup->execute(array($roomId));
-    return $sup;
-}
-
 //Add Bathroom project~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function addBathroomProject($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $userId, $bathroomDate){
@@ -107,11 +97,10 @@ function addRoomProject($roomProjectName, $roomArea, $roomGround, $roomHeight, $
     
     $line = $new->execute(array($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId));
     
-    return $line;
-    
+    return $line;  
 }
 
-//Obtenir les matériaux peinture~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Get les matériaux peinture~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function getPainting(){
     $db = dbConnect(); 
@@ -119,27 +108,44 @@ function getPainting(){
     return $req;
 }
 
-//Obtenir les toilettes~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Get les toilettes~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getToilets(){
     $db = dbConnect(); 
     $req = $db->query('SELECT * FROM toilets');    
     return $req;
 }
 
-//Obtenir les douches~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Get les douches~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getShowers(){
     $db = dbConnect();
     $req = $db->query('SELECT * FROM shower');
     return $req;
 }
 
-//Obtenir les baignoires~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Get les baignoires~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function getBathtubs(){
     $db = dbConnect();
     $req = $db->query('SELECT * FROM  bathtub');
     return $req;
     }
+
+//Delete project room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function delProjectRoom($roomId){
+    $db = dbConnect();  
+    $sup = $db->prepare('DELETE FROM room WHERE roomId = ?');    
+    $sup->execute(array($roomId));
+    return $sup;
+}
+
+//Delete project bathroom~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function delProjectBath($bathroomProjectId){
+    $db = dbConnect();    
+    $sup = $db->prepare('DELETE FROM bathroom WHERE bathroomProjectId = ?');   
+    $sup->execute(array($bathroomProjectId));   
+    return $sup;
+}
 
 
 //Connexion à la BDD~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

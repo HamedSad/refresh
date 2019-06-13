@@ -33,7 +33,15 @@ if (isset($_GET['action'])){
         if(isset($_GET['roomId']) && $_GET['roomId'] >0){
             suppr($_GET['roomId']);
         } else {
-            echo 'erreur lors de la suppression';
+            echo 'erreur lors de la suppression du projet chambre';
+        }
+    }
+    
+    elseif($_GET['action'] == 'delProjectBath'){
+        if(isset($_GET['bathroomProjectId']) && $_GET['bathroomProjectId'] > 0){
+            supprBath($_GET['bathroomProjectId']);
+        } else {
+            echo 'erreur lors de la suppression du projet salle de bain';
         }
     }
 }

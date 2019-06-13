@@ -34,7 +34,6 @@ form{
 }
 
 .formAddBath{
-    border: solid red;
     margin-right: 15%;
 }
 
@@ -45,13 +44,11 @@ form{
 }
 
 .userId{
-    border: solid red;
     display: none;
 }
 
 /*formRoom.php*/
 .formAddRoom{
-    border: solid red;
     margin-right: 15%;
 }
 

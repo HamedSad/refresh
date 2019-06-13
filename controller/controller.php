@@ -71,3 +71,8 @@ function suppr(){
     $sup = delProjectRoom($_GET['roomId']);
     header('Location: index.php');        
 }
+
+function supprBath(){
+    $sup = delProjectBath($_GET['bathroomProjectId']);
+    header('Location: index.php');
+}
