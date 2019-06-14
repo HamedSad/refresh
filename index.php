@@ -13,7 +13,7 @@ if (isset($_GET['action'])){
     }
     
     elseif($_GET['action'] == 'addBath'){
-        addBath($_POST['bathroomProjectName'], $_POST['bathroomArea'], $_POST['bathroomGround'], $_POST['bathroomHeight'], $_POST['bathroomWC'], $_POST['bathroomShower'], $_POST['bathroomBath'], $_POST['userId'], $_POST['bathroomDate'] );
+        addBath($_POST['bathroomProjectName'], $_POST['bathroomArea'], $_POST['bathroomGround'], $_POST['bathroomHeight'], $_POST['bathroomWC'], $_POST['bathroomShower'], $_POST['bathroomBath'], $_POST['bathroomSink'], $_POST['userId'], $_POST['bathroomDate'] );
     }
     
     elseif($_GET['action'] == 'addRoom'){

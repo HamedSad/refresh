@@ -34,6 +34,13 @@
         } else {
             echo 'Vous souhaitez installer une baignoire<br>';
         }
+
+        if($projectBath['bathroomSink'] == 0){
+           echo 'Pas besoin de lavabo<br>';
+        } else {
+            echo 'Vous souhaitez installer un lavabo<br>';
+        }
+    
         
         echo '<a class="btn btn-danger" href="index.php?action=delProjectBath&amp;bathroomProjectId=' . $projectBath['bathroomProjectId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>';
         
@@ -68,6 +75,10 @@
  ?>
 
     <br><br>Nos peintures : <br><br>
+
+        
+
+
 
     <?php 
         echo '<div class="paint">' ;
@@ -113,8 +124,48 @@
                 }
             }
             echo '</div>';
-    
+        
+       
 
-    $content = ob_get_clean();
+        ?>
+
+
+   <?php if($projectBath['bathroomSink'] == 1){ ?>
+    
+    <br> Nos lavabos : <br>
+    <div class="contain">
+        <div class="row">
+            <div class="row__inner">
+           
+            <?php while($all = $sink->fetch()){
+        
+              echo'<div class="tile">';
+    
+                echo'<div class="tile__media">';
+                    
+                  echo'<img class="tile__img"';
+                        
+                    echo'<img src="' . $all['sinkUrlImage'] . '"<br>' ;
+                    
+                echo'</div>';
+                    
+                echo'<div class="tile__details">';
+                  echo'<div class="tile__title">';
+                    
+    
+                  echo'</div>';
+    
+                echo'</div>';
+                    echo $all['sinkName'] . '<br>' . $all['sinkPrice'] . '€';
+              echo'</div>';  
+            }
+        }
+        ?>
+
+            </div>
+        </div>
+    </div>
+
+   <?php $content = ob_get_clean();
 
     require('template.php'); 

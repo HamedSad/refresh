@@ -76,13 +76,13 @@ function getProjectBath($bathId){
 
 //Add Bathroom project~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-function addBathroomProject($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $userId, $bathroomDate){
+function addBathroomProject($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $bathroomSink, $userId, $bathroomDate){
     
     $db = dbConnect();
     
-    $new = $db->prepare('INSERT INTO bathroom (bathroomProjectName, bathroomArea, bathroomGround, bathroomHeight, bathroomWC, bathroomShower, bathroomBath, userId, bathroomDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+    $new = $db->prepare('INSERT INTO bathroom (bathroomProjectName, bathroomArea, bathroomGround, bathroomHeight, bathroomWC, bathroomShower, bathroomBath, bathroomSink, userId, bathroomDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
     
-    $line = $new->execute(array($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $userId));
+    $line = $new->execute(array($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath,$bathroomSink, $userId));
     
     return $line;
     
@@ -129,6 +129,13 @@ function getBathtubs(){
     $req = $db->query('SELECT * FROM  bathtub');
     return $req;
     }
+//Get les sink~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function getSinks(){
+    $db = dbConnect();
+    $req = $db->query('SELECT * FROM  sink');
+    return $req;
+    }
+
 
 //Delete project room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function delProjectRoom($roomId){

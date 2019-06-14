@@ -62,6 +62,14 @@
                     <option value = 1>Oui</option>
                 </select>
             </div><br>
+            
+            <div>
+                <label for="bathroomSink">Souhaitez-vous installer un lavabo ?</label>
+                <select id="bathroomSink" name="bathroomSink"><br>
+                    <option value = 0>Non</option>
+                    <option value = 1>Oui</option>
+                </select>
+            </div><br>
 
             <div class=userId>
                 <input type="text" id="userId" name="userId" value="
