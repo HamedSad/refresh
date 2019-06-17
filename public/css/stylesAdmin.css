@@ -2,15 +2,16 @@
     margin-left: 5%;
     margin-right: 5%;
 }
-.bathroomject{
-    width: 30%
+
+.wrapp p {
+    color: grey;
 }
 
-.roomProject{
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 30%
+.wrapp h2{
+    color: grey;   
 }
+
+
 
 .newProject{
     position:absolute;
@@ -27,68 +28,7 @@
 
 img{
     height: 15%;
-    width: 15%;
-    
-}
-
-/*bathView*/
-.toilets{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    padding-bottom: 7em;
-}
-
-.toilets2 img{
-    height: 5em;
-    width: 5em;
-}
-
-.shower{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    padding-bottom: 7em;
-}
-.shower2 img{
-    height: 5em;
-    width: 5em;
-}
-
-.bathtub{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    padding-bottom: 7em;
-}
-
-.bathtub2 img{
-    height: 5em;
-    width: 5em;
-}
-
-.paint{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    padding-bottom: 7em;
-}
-
-.paint2 img{
-    height: 5em;
-    width: 5em;
-}
-
-.sink{
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    padding-bottom: 7em;
-}
-
-.sink2 img{
-    height: 5em;
-    width: 5em;
+    width: 15%;  
 }
 
 /*confirmationDel.php*/
@@ -104,9 +44,25 @@ img{
     text-align: center;
 }
 
-/*form bath*/
-form{
- 
+/*material*/
+.material{ 
+    display: flex;
+    flex-direction: row;  
+}
+
+.materialPic{
+    margin: 5em 2em 0 5em;
+}
+
+.materialPic img{
+    width: 40em;
+    height: 40em;
+}
+
+.infoProduct{
+    margin-top: 20%;
+    font-size: 40px;
+    text-align: right;
 }
 
 a:link,
@@ -115,12 +71,13 @@ a:active,
 a:visited {
   -webkit-transition: color 150ms;
   transition: color 150ms;
-  color: #95a5a6;
+  color: black;
   text-decoration: none;
 }
 
 .contain {
   width: 100%;
+  margin-left: 5%;
 }
 .row {
   overflow: scroll;
@@ -133,8 +90,8 @@ a:visited {
   transition: 450ms transform, 450ms -webkit-transform;
   font-size: 0;
   white-space: nowrap;
-  margin: 70.3125px 0;
-  padding-bottom: 10px;
+  margin: 40px 0;
+ 
 }
 .tile {
   position: relative;
@@ -148,6 +105,11 @@ a:visited {
   transition: 450ms all;
   -webkit-transform-origin: center left;
           transform-origin: center left;
+}
+
+.title p{
+    color: black;
+    border: solid red;
 }
 .tile__img {
 /*    Photo de l'image avant le hover'*/

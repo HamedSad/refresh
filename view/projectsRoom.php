@@ -1,24 +1,21 @@
 <?php ob_start(); 
-
-    session_start();
-
-    $_SESSION['userId'] = 1;
-    $_SESSION['userName'] = 'Hamed';
-    
+ 
     $title= "Mes projets"; ?>
     
 <div class="wrapp">
     <h1>Mes projets</h1>
-    <div class="bathroomProject">
+    <div class="roomProject">
+        
         <?php
-
-            echo "<br><br>Mes projets chambres à vivre : <br>";
+            echo '<ul>';
+            echo "<br><br><h3>Mes projets chambres à vivre :</h3><br>";
 
             while($dataRoom = $room->fetch()){
                 if($dataRoom['roomId'] != 0){                        
-                    echo ' -' . '<a href="index.php?action=projectRoom&amp;roomId=' . $dataRoom['roomId'] . '">' . $dataRoom['roomProjectName'] . ' édité le '. date("d/m/Y", strtotime($dataRoom['roomDate'])) . '</a><br>';   
+                    echo '<li><a href="index.php?action=projectRoom&amp;roomId=' . $dataRoom['roomId'] . '">' . $dataRoom['roomProjectName'] . ' édité le '. date("d/m/Y", strtotime($dataRoom['roomDate'])) . '</a><br></li>';   
                 }
             }
+            echo '</ul>';
         ?>
     </div>
     </div>

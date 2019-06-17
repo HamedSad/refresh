@@ -1,6 +1,6 @@
 <?php ob_start();  
 
-    session_start();
+    
     
     $title= 'Confirmation de suppression du projet ' . $sup['roomProjectName']; ?>
     

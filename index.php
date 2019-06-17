@@ -55,6 +55,51 @@ if (isset($_GET['action'])){
         affichageDelRoom();
     }
     
+    elseif($_GET['action'] == 'onePaint'){
+        if(isset($_GET['paintId']) && $_GET['paintId'] > 0 ){
+        singlePaint();
+        
+        } else {
+            echo 'erreur lors de la selection d\'une peinture'; 
+        }
+    }
+    
+    elseif($_GET['action'] == 'oneToilet'){
+        if(isset($_GET['toiletsId']) && $_GET['toiletsId'] > 0 ){
+        singleToilet();
+        
+        } else {
+            echo 'erreur lors de la selection d\'une toilette'; 
+        }
+    }
+    
+    elseif($_GET['action'] == 'oneShower'){
+        if(isset($_GET['showerId']) && $_GET['showerId'] > 0 ){
+        singleShower();
+        
+        } else {
+            echo 'erreur lors de la selection d\'une douche'; 
+        }
+    }
+    
+    elseif($_GET['action'] == 'oneBathtub'){
+        if(isset($_GET['bathtubId']) && $_GET['bathtubId'] > 0 ){
+        singleBathtub();
+        
+        } else {
+            echo 'erreur lors de la selection d\'une baignoire'; 
+        }
+    }
+    
+    elseif($_GET['action'] == 'oneSink'){
+        if(isset($_GET['sinkId']) && $_GET['sinkId'] > 0 ){
+        singleSink();
+        
+        } else {
+            echo 'erreur lors de la selection d\'un lévier'; 
+        }
+    }
+    
 }
 
 else {

@@ -1,4 +1,9 @@
 <?php
+
+session_start();
+
+    $_SESSION['userId'] = 1;
+    $_SESSION['userName'] = 'Hamed';
 //sortir tous les projets en fonction de l'utilisateur~~~~~~~~~~~~~~~~~~~~
 //function getProjects(){
 //   
@@ -25,8 +30,8 @@
 function getProjectsRoom(){
    
     $db = dbConnect();
-    
-    $req = $db->query('SELECT * FROM room WHERE userId = 1 ORDER BY roomId DESC');
+    $userId = $_SESSION['userId'] ;
+    $req = $db->query("SELECT * FROM room WHERE userId = '$userId'  ORDER BY roomId DESC");
     
     return $req;   
 }
@@ -34,8 +39,8 @@ function getProjectsRoom(){
 function getProjectsBath(){
    
     $db = dbConnect();
-    
-    $req = $db->query('SELECT * FROM bathroom WHERE userId = 1 ORDER BY bathroomProjectId DESC');
+    $userId = $_SESSION['userId'] ;
+    $req = $db->query("SELECT * FROM bathroom WHERE userId = '$userId' ORDER BY bathroomProjectId DESC");
     
     return $req;   
 }
@@ -44,12 +49,13 @@ function getProjectsBath(){
 
 function getProjectRoom($roomId){
     $db = dbConnect();
-    $req = $db->prepare('SELECT * FROM room 
+    $userId = $_SESSION['userId'] ;
+    $req = $db->prepare("SELECT * FROM room 
     
     INNER JOIN ground
     On room.roomGround = ground.groundId
     
-    WHERE userId = 1 and roomId = ?');   
+    WHERE userId = '$userId' and roomId = ?");   
     $req->execute(array($roomId));
     $projectRoom = $req->fetch();
     
@@ -60,13 +66,13 @@ function getProjectRoom($roomId){
 
 function getProjectBath($bathId){
     $db = dbConnect();
-    
-    $req = $db->prepare('SELECT * FROM bathroom 
+    $userId = $_SESSION['userId'] ;
+    $req = $db->prepare("SELECT * FROM bathroom 
     
     INNER JOIN ground
     ON bathroom.bathroomGround = ground.groundId
     
-    WHERE userId = 1 AND bathroomProjectId = ?');
+    WHERE userId = '$userId' AND bathroomProjectId = ?");
     
     $req->execute(array($bathId));
     $projectBath = $req->fetch();
@@ -104,39 +110,77 @@ function addRoomProject($roomProjectName, $roomArea, $roomGround, $roomHeight, $
 
 function getPainting(){
     $db = dbConnect(); 
-    $req = $db->query('SELECT * FROM paint');    
+    $req = $db->query('SELECT * FROM paint ORDER BY paintPrice');    
     return $req;
+}
+
+function getOnePaint($paintId){
+    $db = dbConnect();
+    $req = $db->prepare('SELECT * FROM paint WHERE paintId = ?');
+    $req->execute(array($paintId));
+    $onePaint = $req->fetch();
+    return $onePaint;
 }
 
 //Get les toilettes~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getToilets(){
     $db = dbConnect(); 
-    $req = $db->query('SELECT * FROM toilets');    
+    $req = $db->query('SELECT * FROM toilets ORDER BY toiletsPrice');    
     return $req;
+}
+
+function getOneToilet($toiletsId){
+    $db = dbConnect();
+    $req = $db->prepare('SELECT * FROM toilets WHERE toiletsId = ?');
+    $req->execute(array($toiletsId));
+    $oneToilet = $req->fetch();
+    return $oneToilet;
 }
 
 //Get les douches~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getShowers(){
     $db = dbConnect();
-    $req = $db->query('SELECT * FROM shower');
+    $req = $db->query('SELECT * FROM shower ORDER BY showerPrice');
     return $req;
+}
+
+function getOneShower($showerId){
+    $db = dbConnect();
+    $req = $db->prepare('SELECT * FROM shower WHERE showerId = ?');
+    $req->execute(array($showerId));
+    $oneShower = $req->fetch();
+    return $oneShower;
 }
 
 //Get les baignoires~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function getBathtubs(){
     $db = dbConnect();
-    $req = $db->query('SELECT * FROM  bathtub');
+    $req = $db->query('SELECT * FROM bathtub ORDER BY bathtubPrice');
     return $req;
     }
+
+function getOneBathtub($bathtubId){
+    $db = dbConnect();
+    $req = $db->prepare('SELECT * FROM bathtub WHERE bathtubId = ?');
+    $req->execute(array($bathtubId));
+    $oneBathtub = $req->fetch();
+    return $oneBathtub;
+}
 //Get les sink~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getSinks(){
     $db = dbConnect();
-    $req = $db->query('SELECT * FROM  sink');
+    $req = $db->query('SELECT * FROM sink ORDER BY sinkPrice');
     return $req;
     }
 
-
+function getOneSink($sinkId){
+    $db = dbConnect();
+    $req = $db->prepare('SELECT * FROM sink WHERE sinkId = ?');
+    $req->execute(array($sinkId));
+    $sink = $req->fetch();
+    return $sink;
+}
 //Delete project room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function delProjectRoom($roomId){
     $db = dbConnect();  

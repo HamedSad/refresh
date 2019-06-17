@@ -2,21 +2,26 @@
 
     $title= "Mes projets"; ?>
 
-    <div class="roomProject">
-    <?php 
+    <div class="wrapp">
+        <div class="roomProject">
+        <?php 
 
-        echo "<br><br>Mes projets salle de bain : <br>"; 
+            echo "<br><br><h3>Mes projets salle de bain : </h3><br>"; 
 
-        while($dataBathroom = $bath->fetch()){
+            echo '<ul>';
 
-            if($dataBathroom['bathroomProjectId'] != 0){
-                
-                
-                echo ' -' . '<a href="index.php?action=projectBath&amp;bathId=' . $dataBathroom['bathroomProjectId'] . '">' . $dataBathroom['bathroomProjectName'] . ' édité le ' . date("d/m/Y", strtotime($dataBathroom['bathroomDate'])) . '</a><br>';
+            while($dataBathroom = $bath->fetch()){    
+
+                if($dataBathroom['bathroomProjectId'] != 0){
+
+                    echo '<li>' . '<a href="index.php?action=projectBath&amp;bathId=' . $dataBathroom['bathroomProjectId'] . '">' . $dataBathroom['bathroomProjectName'] . ' édité le ' . date("d/m/Y", strtotime($dataBathroom['bathroomDate'])) . '</a><br></li>';
+                }
             }
-        }
-    ?>
+            echo '</ul>';
+        ?>
 
+        </div>
+    
     </div>
 
     <div class="newProject">

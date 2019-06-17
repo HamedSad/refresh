@@ -8,7 +8,6 @@ require('model/model.php');
 //    require('view/myProjects.php');
 //}
 
-
 function listProjectsRoom(){
     $room = getProjectsRoom();
     require('view/projectsRoom.php');
@@ -36,6 +35,38 @@ function getOneBath(){
     $sink = getSinks();
     require('view/bathView.php');
 }
+
+function singlePaint(){
+    $onePaint = getOnePaint($_GET['paintId']);
+    $paint = getPainting();
+    require('view/onePaint.php');
+}
+
+function singleToilet(){
+    $oneToilet = getOneToilet($_GET['toiletsId']);
+    $wc = getToilets();
+    require('view/oneToilet.php');
+}
+
+function singleShower(){
+    $oneShower = getOneShower($_GET['showerId']);
+    $shower = getShowers();
+    require('view/oneShower.php');
+}
+
+function singleBathtub(){
+    $oneBathtub = getOneBathtub($_GET['bathtubId']);
+    $bathtub = getBathtubs();
+    require('view/oneBathtub.php');
+}
+
+function singleSink(){
+    $oneSink = getOneSink($_GET['sinkId']);
+    $sink = getSinks();
+    require('view/oneSink.php');
+}
+
+
 
 //Add bathroom Project~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
