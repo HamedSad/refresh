@@ -91,6 +91,19 @@ img{
     width: 5em;
 }
 
+/*confirmationDel.php*/
+.confirmation{
+    padding: 5em 5em 0 5em;
+    color: grey;
+    font-size: 20px;
+}
+
+.confirmation img{
+    width: 8em;
+    height: 6em;
+    text-align: center;
+}
+
 /*form bath*/
 form{
  

@@ -67,13 +67,24 @@ function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId,
     
 }
 
-//Fonction supprimer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function suppr(){
+//Supprimer projet room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function supprRoom(){
     $sup = delProjectRoom($_GET['roomId']);
     header('Location: index.php');        
 }
 
+function affichageDelRoom(){
+    $sup = getProjectRoom($_GET['roomId']);
+    require('view/confirmationDelRoom.php');
+}
+
+//Supprimer projet bath~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function supprBath(){
-    $sup = delProjectBath($_GET['bathroomProjectId']);
+    $sup = delProjectBath($_GET['bathroomProjectId']);   
     header('Location: index.php');
+}
+
+function affichageDelBath(){
+    $sup = getProjectBath($_GET['bathroomProjectId']);
+    require('view/confirmationDelBath.php');
 }

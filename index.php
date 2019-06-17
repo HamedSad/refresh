@@ -29,13 +29,6 @@ if (isset($_GET['action'])){
         getOneBath(); 
     }
     
-    elseif($_GET['action'] == 'delProjectRoom'){
-        if(isset($_GET['roomId']) && $_GET['roomId'] >0){
-            suppr($_GET['roomId']);
-        } else {
-            echo 'erreur lors de la suppression du projet chambre';
-        }
-    }
     
     elseif($_GET['action'] == 'delProjectBath'){
         if(isset($_GET['bathroomProjectId']) && $_GET['bathroomProjectId'] > 0){
@@ -44,6 +37,24 @@ if (isset($_GET['action'])){
             echo 'erreur lors de la suppression du projet salle de bain';
         }
     }
+    
+    elseif($_GET['action'] == 'affichageBath'){
+        affichageDelBath();
+    }
+    
+    
+    elseif($_GET['action'] == 'delProjectRoom'){
+        if(isset($_GET['roomId']) && $_GET['roomId'] > 0){
+            supprRoom($_GET['roomId']);
+        } else {
+            echo 'erreur lors de la suppression du projet chambre';
+        }
+    }
+    
+    elseif($_GET['action'] == 'affichageRoom'){
+        affichageDelRoom();
+    }
+    
 }
 
 else {

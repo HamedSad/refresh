@@ -42,7 +42,7 @@
         }
     
         
-        echo '<a class="btn btn-danger" href="index.php?action=delProjectBath&amp;bathroomProjectId=' . $projectBath['bathroomProjectId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>';
+        echo '<a class="btn btn-danger" href="index.php?action=affichageBath&amp;bathroomProjectId=' . $projectBath['bathroomProjectId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>';
         
     ?>
 
@@ -75,21 +75,67 @@
  ?>
 
     <br><br>Nos peintures : <br><br>
-
+    
+<!--
+    
+-->
+    
+    <br> Nos peintures : <br>
+    <div class="contain">
+        <div class="row">
+            <div class="row__inner">
+           
+            <?php while($choice = $paint->fetch()){
         
+              echo'<div class="tile">';
+    
+                echo'<div class="tile__media">';
+                    
+                  echo'<img class="tile__img"';
+                        
+                    echo'<img src="' . $choice['paintUrlImage'] . '"<br>' ;
+                    
+                echo'</div>';
+                    echo $choice['paintName'] . '<br>' . $choice['paintPrice'] . '€';
+              echo'</div>';  
+            }
+        
+         ?>
+        </div>
+        </div>
+    </div>
 
 
-
-    <?php 
-        echo '<div class="paint">' ;
-            while($choice = $paint->fetch()){
-                echo '<div class="paint2">' ;
-                    echo '<img src="' . $choice['paintUrlImage'] . '"><br>' . $choice['paintName'] . ' à partir de ' . $choice['paintPrice'] . '€<br>';
-                echo '</div>';   
+    <?php
+    if($projectBath['bathroomWC'] == 1){ ?>
+    
+    <br> Nos toilettes : <br>
+    <div class="contain">
+        <div class="row">
+            <div class="row__inner">
+           
+            <?php while($all = $wc->fetch()){
+        
+              echo'<div class="tile">';
+    
+                echo'<div class="tile__media">';
+                    
+                  echo'<img class="tile__img"';
+                        
+                    echo'<img src="' . $all['toiletsUrlImage'] . '"<br>' ;
+                    
+                echo'</div>';
+                    echo $all['toiletsName'] . '<br>' . $all['toiletsPrice'] . '€';
+              echo'</div>';  
+            }
         }
-        echo '</div>'; 
-    
-    
+         ?>
+        </div>
+        </div>
+    </div>
+
+<!--
+
         if($projectBath['bathroomWC'] == 1){
             echo '<br> Nos toilettes: <br>';
             echo '<div class="toilets">' ;
@@ -101,7 +147,40 @@
 
             }
             echo '</div>';
+-->
+    
+    
 
+       <?php
+    if($projectBath['bathroomShower'] == 1){ ?>
+    
+    <br> Nos douches : <br>
+    <div class="contain">
+        <div class="row">
+            <div class="row__inner">
+           
+            <?php while($all = $shower->fetch()){
+        
+              echo'<div class="tile">';
+    
+                echo'<div class="tile__media">';
+                    
+                  echo'<img class="tile__img"';
+                        
+                    echo'<img src="' . $all['showerUrlImage'] . '"<br>' ;
+                    
+                echo'</div>';
+                    echo $all['showerName'] . '<br>' . $all['showerPrice'] . '€';
+              echo'</div>';  
+            }
+        }
+         ?>
+        </div>
+        </div>
+    </div>
+
+
+<!--
         if($projectBath['bathroomShower'] == 1){
             echo '<br> Nos douches : <br>'; 
             echo '<div class="shower">' ;
@@ -112,9 +191,40 @@
                 }
             }
             echo '</div>';
+-->
+
+
+    
+    <?php
+    if($projectBath['bathroomBath'] == 1){ ?>
+    
+    <br> Nos baignoires : <br>
+    <div class="contain">
+        <div class="row">
+            <div class="row__inner">
+           
+            <?php while($all = $bathtub->fetch()){
+        
+              echo'<div class="tile">';
+    
+                echo'<div class="tile__media">';
+                    
+                  echo'<img class="tile__img"';
+                        
+                    echo'<img src="' . $all['bathtubUrlImage'] . '"<br>' ;
+                    
+                echo'</div>';
+                    echo $all['bathtubName'] . '<br>' . $all['bathtubPrice'] . '€';
+              echo'</div>';  
+            }
+        }
+         ?>
+           
         
 
-        if($projectBath['bathroomBath'] == 1){
+        
+<!--
+                if($projectBath['bathroomBath'] == 1){
             echo '<br> Nos baignoires : <br>';
             echo '<div class="bathtub">' ;
                 while($all = $bathtub->fetch()){
@@ -124,13 +234,19 @@
                 }
             }
             echo '</div>';
-        
-       
-
         ?>
+-->
+                
+        
+
+            </div>
+        </div>
+    </div>
 
 
-   <?php if($projectBath['bathroomSink'] == 1){ ?>
+   <?php 
+    
+    if($projectBath['bathroomSink'] == 1){ ?>
     
     <br> Nos lavabos : <br>
     <div class="contain">
@@ -147,14 +263,6 @@
                         
                     echo'<img src="' . $all['sinkUrlImage'] . '"<br>' ;
                     
-                echo'</div>';
-                    
-                echo'<div class="tile__details">';
-                  echo'<div class="tile__title">';
-                    
-    
-                  echo'</div>';
-    
                 echo'</div>';
                     echo $all['sinkName'] . '<br>' . $all['sinkPrice'] . '€';
               echo'</div>';  

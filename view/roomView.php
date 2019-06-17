@@ -16,7 +16,7 @@
         echo 'Sol en ' . $projectRoom['groundName'] . '<br><br>';
         }
 
-    echo '<a class="btn btn-danger" href="index.php?action=delProjectRoom&amp;roomId=' . $projectRoom['roomId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>';
+    echo '<a class="btn btn-danger" href="index.php?action=affichageRoom&amp;roomId=' . $projectRoom['roomId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>';
 
 ?>
 
@@ -48,17 +48,34 @@
 
  ?>
 
-<br><br>Nos peintures : <br><br>
 
-    <?php 
-        echo '<div class="paint">' ;
-            while($choice = $paint->fetch()){
-                echo '<div class="paint2">' ;
-                    echo '<img src="' . $choice['paintUrlImage'] . '"><br>' . $choice['paintName'] . ' à partir de ' . $choice['paintPrice'] . '€<br>';
-                echo '</div>'; 
-            }
-        echo '</div>'; 
+<br><br> Nos peintures : <br>
+    <div class="contain">
+        <div class="row">
+            <div class="row__inner">
+           
+            <?php while($choice = $paint->fetch()){
+        
+              echo'<div class="tile">';
     
-    $content = ob_get_clean();
+                echo'<div class="tile__media">';
+                    
+                  echo'<img class="tile__img"';
+                        
+                    echo'<img src="' . $choice['paintUrlImage'] . '"<br>' ;
+                    
+                echo'</div>';
+                    echo $choice['paintName'] . '<br>' . $choice['paintPrice'] . '€';
+              echo'</div>';  
+            }
+        
+         ?>
+        </div>
+        </div>
+    </div>
+
+
+    
+    <?php $content = ob_get_clean();
 
     require('template.php');

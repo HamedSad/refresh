@@ -6,6 +6,8 @@
     $bathroomDate = strftime('%d/%m/%Y %H:%M:%S');
     
     $title= "Création de votre projet salle de bain"; ?>
+
+    
     
     
     
