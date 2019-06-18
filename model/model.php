@@ -106,6 +106,17 @@ function addRoomProject($roomProjectName, $roomArea, $roomGround, $roomHeight, $
     return $line;  
 }
 
+//Inscription
+function newUser($userName, $userEmail, $userPassword){
+    $db =dbConnect();
+    
+    $new = $db->prepare('INSERT INTO user (userName, userEmail, userPassword) VALUES (?, ?, ?)');
+    
+    $line = $new->execute(array($userName, $userEmail, $userPassword));
+    
+    return $line;
+}
+
 //Get les matériaux peinture~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function getPainting(){
@@ -196,6 +207,15 @@ function delProjectBath($bathroomProjectId){
     $sup = $db->prepare('DELETE FROM bathroom WHERE bathroomProjectId = ?');   
     $sup->execute(array($bathroomProjectId));   
     return $sup;
+}
+
+//Vérify password~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function verifyPassword($userName){
+    $db = dbConnect();
+    $pass = $db->prepare("SELECT userPassword FROM user WHERE userName = ?");
+    $pass->execute(array($userName));
+    $user = $pass->fetch();
+    return $user;
 }
 
 

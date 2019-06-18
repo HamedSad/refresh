@@ -18,14 +18,14 @@ function listProjectsBathroom(){
     require('view/projectsBath.php');
 }
 
-//Obtenir un projet room en fonction de son Id~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Obtenir un projet room en fonction de son Id~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getOneRoom(){
     $projectRoom = getProjectRoom($_GET['roomId']);
     $paint = getPainting();
     require('view/roomView.php');
 }
 
-//Obtenir un projet Bathroom en fonction de son Id~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Obtenir un projet Bathroom en fonction de son Id~~~~~~~~~~~~~~~~~~~~~~
 function getOneBath(){
     $projectBath = getProjectBath($_GET['bathId']);
     $paint = getPainting();
@@ -98,6 +98,19 @@ function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId,
     
 }
 
+//Add user~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function addUser($userName, $userEmail, $userPassword){
+    $line = newUser($userName, $userEmail, $userPassword);
+    
+    if($line === false){
+        die('erreur addUser');
+    }
+    
+    else{
+        header('Location: index.php?');
+    }
+}
+
 //Supprimer projet room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function supprRoom(){
     $sup = delProjectRoom($_GET['roomId']);
@@ -118,4 +131,10 @@ function supprBath(){
 function affichageDelBath(){
     $sup = getProjectBath($_GET['bathroomProjectId']);
     require('view/confirmationDelBath.php');
+}
+
+//Verify user password~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function testPassword(){
+    $userPass = verifyPassword($_GET['userName']);
+    header('Location: index.php?');
 }

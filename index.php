@@ -2,6 +2,13 @@
 
 require('controller/controller.php');
 
+function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+}
+
 if (isset($_GET['action'])){
     
     if($_GET['action'] == 'myProjectsRoom'){
@@ -18,6 +25,50 @@ if (isset($_GET['action'])){
     
     elseif($_GET['action'] == 'addRoom'){
         addRoom($_POST['roomProjectName'], $_POST['roomArea'], $_POST['roomGround'], $_POST['roomHeight'], $_POST['userId'], $_POST['roomDate']);
+    }
+    
+    
+    
+    elseif($_GET['action'] == 'addUser'){
+        
+        //Ajouter les messages d'erreur à chaque input
+        //Rester sur la même page si message d'erreur
+        
+        
+        $userName = test_input($_POST["userName"]);
+        $userEmail = test_input($_POST["userEmail"]);
+        $userPassword = test_input($_POST["userPassword"]);
+        $userPassword2 = test_input($_POST["userPassword2"]);
+        
+        if(!empty($userName)&& !empty($userPassword)&&  !empty($userPassword2)){
+            
+            if($userPassword == $userPassword2){
+                $hash = password_hash($userPassword, PASSWORD_DEFAULT);
+                addUser($userName, $userEmail, $hash); 
+            } else {
+                echo 'Les mots de passe ne sont pas identiques';        
+            }
+               
+        } else {
+                echo 'Les champs ne sont pas tous remplis';
+            }             
+    }
+    
+    elseif($_GET['action'] == 'connectUser'){
+//        $userName = test_input($_POST["userName"]);
+//        $userPassword = test_input($_POST["userPassword"]);
+        $hash = $user[0];
+        if(isset($_POST["userName"]) && isset($_POST["userPassword"])){
+            $correctPassword = password_verify($_POST["userPassword"], $hash);
+            if($correctPassword){
+                testPassword($_GET['userName']);
+            } else {
+                echo 'Mot de passe ou identifiant incorrect';
+            }
+            
+        }
+        
+        
     }
     
     elseif($_GET['action'] == 'projectRoom'){

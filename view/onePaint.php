@@ -17,7 +17,7 @@
     
 </div>
 
-<br><br> Nos peintures : <br>
+<br><br> Nos autres peintures : <br>
     <div class="contain">
         <div class="row">
             <div class="row__inner">
