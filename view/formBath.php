@@ -7,10 +7,6 @@
     
     $title= "Création de votre projet salle de bain"; ?>
 
-    
-    
-    
-    
     <div class="formAddBath">
         <h1>Création de votre projet salle de bain</h1>
         <form action="../index.php?action=addBath&amp" method="post">   

@@ -4,6 +4,7 @@
     
 <div class="wrapp">
     <h1>Mes projets</h1>
+    <p>Bonjour <?= $_SESSION['userName'] ?></p>
     <div class="roomProject">
         
         <?php

@@ -2,9 +2,6 @@
 
 session_start();
 
-$_SESSION['userId'] = 1;
-$_SESSION['userName'] = 'Hamed';
-
 require_once("model/Manager.php");
 
 class RoomManager extends Manager {

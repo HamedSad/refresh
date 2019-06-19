@@ -4,9 +4,10 @@
     
     $title= "Connexion"; ?>
 
+
     <div class="formAddBath">
         <h1>Connexion</h1>
-        <form action="../index.php?action=connectUser&amp" method="post">   
+        <form action="../model/register.php" method="post">   
                       
             <div>
                 <label for="userName">Nom *</label>

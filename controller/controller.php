@@ -138,11 +138,11 @@ function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId,
 }
 
 //Add user~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function addUser($userName, $userEmail, $userPassword){
+function addUser($userName, $userEmail, $userPassword, $userDateInscription){
     
     $userManager = new UserManager();
     
-    $line = $userManager->newUser($userName, $userEmail, $userPassword);
+    $line = $userManager->newUser($userName, $userEmail, $userPassword, $userDateInscription);
     
     if($line === false){
         die('erreur addUser');
@@ -159,7 +159,20 @@ function testPassword(){
     $userManager = new UserManager();
     
     $userPass = $userManager->verifyPassword($_GET['userName']);
-    header('Location: index.php?');
+    
+    if(isset($_POST["userName"]) && isset($_POST["userPassword"])){
+    
+    $hash = $password;
+    $correctPassword = password_verify($_POST["userName"], $hash);
+        
+    if($correctPassword){
+        header('Location: index.php?');
+    }
+    else{
+        echo 'erreur de mdp ou userName invalide';
+    }
+    
+    }
 }
 
 //Supprimer projet room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
