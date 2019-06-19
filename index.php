@@ -2,6 +2,8 @@
 
 require('controller/controller.php');
 
+
+
 function test_input($data) {
    $data = trim($data);
    $data = stripslashes($data);
@@ -26,19 +28,17 @@ if (isset($_GET['action'])){
     elseif($_GET['action'] == 'addRoom'){
         addRoom($_POST['roomProjectName'], $_POST['roomArea'], $_POST['roomGround'], $_POST['roomHeight'], $_POST['userId'], $_POST['roomDate']);
     }
-    
-    
-    
+
     elseif($_GET['action'] == 'addUser'){
         
         //Ajouter les messages d'erreur à chaque input
         //Rester sur la même page si message d'erreur
-        
-        
+          
         $userName = test_input($_POST["userName"]);
         $userEmail = test_input($_POST["userEmail"]);
         $userPassword = test_input($_POST["userPassword"]);
         $userPassword2 = test_input($_POST["userPassword2"]);
+        
         
         if(!empty($userName)&& !empty($userPassword)&&  !empty($userPassword2)){
             
@@ -55,13 +55,15 @@ if (isset($_GET['action'])){
     }
     
     elseif($_GET['action'] == 'connectUser'){
-//        $userName = test_input($_POST["userName"]);
-//        $userPassword = test_input($_POST["userPassword"]);
-        $hash = $user[0];
+        $userPass = verifyPassword($_GET['userName']);
+        $userName = test_input($_POST["userName"]);
+        $userPassword = test_input($_POST["userPassword"]);
+        //$hash = $userPass[0];
         if(isset($_POST["userName"]) && isset($_POST["userPassword"])){
-            $correctPassword = password_verify($_POST["userPassword"], $hash);
-            if($correctPassword){
-                testPassword($_GET['userName']);
+            
+            if($userPass['userPassword'] == $_POST["userPassword"]){
+                //testPassword($_GET['userName']);
+                echo 'Bienvenue';
             } else {
                 echo 'Mot de passe ou identifiant incorrect';
             }

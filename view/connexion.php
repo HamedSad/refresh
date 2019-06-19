@@ -10,12 +10,12 @@
                       
             <div>
                 <label for="userName">Nom *</label>
-                <input type="text" id="userName" name="userName" size="40" required><br><br>
+                <input type="text" id="userName" name="userName" size="40"><br><br>
             </div>  
             
             <div>
                 <label for="userPassword">Mot de passe *</label>
-                <input type="password" id="userPassword" name="userPassword" size="40" required>
+                <input type="password" id="userPassword" name="userPassword" size="40">
             </div><br>
             
 
