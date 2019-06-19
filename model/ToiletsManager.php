@@ -1,6 +1,8 @@
 <?php
 
-class ToiletsManager{
+require_once("model/Manager.php");
+
+class ToiletsManager extends Manager {
     
     public function getToilets(){
         
@@ -17,16 +19,5 @@ class ToiletsManager{
         $oneToilet = $req->fetch();
         return $oneToilet;
     }
-    
-    private function dbConnect(){
-
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=refresh;charset=utf8', 'root', '');
-            return $db;
-            
-        } catch(Exception $e)  {
-            die('Erreur : '.$e->getMessage());
-        }
-    }  
     
 }

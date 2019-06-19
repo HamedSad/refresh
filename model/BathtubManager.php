@@ -1,6 +1,8 @@
 <?php
 
-class BathtubManager{
+require_once("model/Manager.php");
+
+class BathtubManager extends Manager {
 
     public function getBathtubs(){
         $db = $this->dbConnect();
@@ -16,14 +18,4 @@ class BathtubManager{
         return $oneBathtub;
     }
     
-    private function dbConnect(){
-
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=refresh;charset=utf8', 'root', '');
-            return $db;
-            
-        } catch(Exception $e)  {
-            die('Erreur : '.$e->getMessage());
-        }
-    }  
 }

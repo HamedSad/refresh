@@ -2,10 +2,12 @@
 
 session_start();
 
-    $_SESSION['userId'] = 1;
-    $_SESSION['userName'] = 'Hamed';
+$_SESSION['userId'] = 1;
+$_SESSION['userName'] = 'Hamed';
 
-class RoomManager{
+require_once("model/Manager.php");
+
+class RoomManager extends Manager {
 
     public function getProjectsRoom(){
 
@@ -50,15 +52,5 @@ class RoomManager{
         $sup->execute(array($roomId));
         return $sup;
     }
-
-    private function dbConnect(){
-
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=refresh;charset=utf8', 'root', '');
-            return $db;
-            
-        } catch(Exception $e)  {
-            die('Erreur : '.$e->getMessage());
-        }
-    }  
+ 
 }

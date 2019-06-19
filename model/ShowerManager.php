@@ -1,6 +1,8 @@
 <?php
 
-class ShowerManager{
+require_once("model/Manager.php");
+
+class ShowerManager extends Manager {
  
     public function getShowers(){
         
@@ -17,15 +19,4 @@ class ShowerManager{
         $oneShower = $req->fetch();
         return $oneShower;
     }
-    
-    private function dbConnect(){
-
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=refresh;charset=utf8', 'root', '');
-            return $db;
-            
-        } catch(Exception $e)  {
-            die('Erreur : '.$e->getMessage());
-        }
-    }  
 }

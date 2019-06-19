@@ -1,6 +1,8 @@
 <?php
 
-class PaintManager{
+require_once("model/Manager.php");
+
+class PaintManager extends Manager {
     
     public function getPainting(){
         $db = $this->dbConnect(); 
@@ -15,15 +17,5 @@ class PaintManager{
         $onePaint = $req->fetch();
         return $onePaint;
     }
-    
-    private function dbConnect(){
-
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=refresh;charset=utf8', 'root', '');
-            return $db;
-            
-        } catch(Exception $e)  {
-            die('Erreur : '.$e->getMessage());
-        }
-    }  
+     
 }

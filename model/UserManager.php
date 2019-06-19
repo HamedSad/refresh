@@ -1,6 +1,8 @@
 <?php
 
-class UserManager{
+require_once("model/Manager.php");
+
+class UserManager extends Manager{
  
     public function newUser($userName, $userEmail, $userPassword){
         $db = $this->dbConnect();
@@ -18,15 +20,4 @@ class UserManager{
         $user = $pass->fetch();
         return $user;
     }
-    
-    private function dbConnect(){
-
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=refresh;charset=utf8', 'root', '');
-            return $db;
-            
-        } catch(Exception $e)  {
-            die('Erreur : '.$e->getMessage());
-        }
-    } 
 }

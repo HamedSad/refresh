@@ -1,6 +1,8 @@
 <?php
 
-class SinkManager{
+require_once("model/Manager.php");
+
+class SinkManager extends Manager {
 
     public function getSinks(){
         
@@ -18,14 +20,4 @@ class SinkManager{
         return $sink;
     }
     
-    private function dbConnect(){
-
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=refresh;charset=utf8', 'root', '');
-            return $db;
-            
-        } catch(Exception $e)  {
-            die('Erreur : '.$e->getMessage());
-        }
-    }  
 }

@@ -1,9 +1,11 @@
 <?php
 
-    $_SESSION['userId'] = 1;
-    $_SESSION['userName'] = 'Hamed';
+$_SESSION['userId'] = 1;
+$_SESSION['userName'] = 'Hamed';
 
-class BathroomManager{
+require_once("model/Manager.php");
+
+class BathroomManager extends Manager {
 
     public function getProjectsBath(){
    
@@ -50,16 +52,5 @@ class BathroomManager{
         $sup->execute(array($bathroomProjectId));   
         return $sup;
     }
-    
-    private function dbConnect(){
-
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=refresh;charset=utf8', 'root', '');
-            return $db;
-            
-        } catch(Exception $e)  {
-            die('Erreur : '.$e->getMessage());
-        }
-    }  
 
 }
