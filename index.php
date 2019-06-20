@@ -19,6 +19,14 @@ if (isset($_GET['action'])){
         listProjectsBathroom();
     }
     
+    elseif($_GET['action'] == 'oneBasket'){
+        basket();
+    }
+    
+    elseif($_GET['action'] == 'addBasket'){
+        addBasket($_POST['basketProductName'], $_POST['basketProductPrice'], $_POST['basketProductQuantity'], $_POST['basketProductUrlImage'], $_POST['userId']);
+    }
+    
     elseif($_GET['action'] == 'addBath'){
         addBath($_POST['bathroomProjectName'], $_POST['bathroomArea'], $_POST['bathroomGround'], $_POST['bathroomHeight'], $_POST['bathroomWC'], $_POST['bathroomShower'], $_POST['bathroomBath'], $_POST['bathroomSink'], $_POST['userId'], $_POST['bathroomDate'] );
     }
@@ -68,13 +76,20 @@ if (isset($_GET['action'])){
     elseif($_GET['action'] == 'projectBath'){
         getOneBath(); 
     }
-    
-    
+       
     elseif($_GET['action'] == 'delProjectBath'){
         if(isset($_GET['bathroomProjectId']) && $_GET['bathroomProjectId'] > 0){
             supprBath($_GET['bathroomProjectId']);
         } else {
             echo 'erreur lors de la suppression du projet salle de bain';
+        }
+    }
+    
+    elseif($_GET['action'] == 'delBasket'){
+        if(isset($_GET['basketProductId']) && $_GET['basketProductId'] > 0){
+            delBasket($_GET['basketProductId']);
+        } else {
+            echo 'impossible de supprimer l\'article';
         }
     }
     
@@ -140,9 +155,15 @@ if (isset($_GET['action'])){
         }
     }
     
+    
+    elseif($_GET['action'] == 'deconnexion'){
+        deconnexion();
+    }
+    
 }
 
 else {
+    
     echo listProjectsRoom();
     echo listProjectsBathroom();
 }

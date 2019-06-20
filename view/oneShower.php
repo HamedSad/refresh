@@ -6,6 +6,10 @@
     
     <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Retour</a>
     
+    <a href="index.php">Mes projets</a>
+    <a href="index.php?action=oneBasket">Mon panier</a>
+    <a href="disconnection.php">Déconnexion</a>
+    
     <div class="materialPic">
         <img src="<?= $oneShower['showerUrlImage'] ;?>">
     </div>

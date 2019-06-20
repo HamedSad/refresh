@@ -1,7 +1,5 @@
 <?php ob_start();  
-
-    
-    
+  
     $title= 'Confirmation de suppression du projet ' . $sup['roomProjectName']; ?>
     
     <div class="confirmation">

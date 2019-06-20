@@ -6,11 +6,11 @@ class BathroomManager extends Manager {
 
     public function getProjectsBath(){
    
-    $db = $this->dbConnect();
-    $userId = $_SESSION['userId'] ;
-    $req = $db->query("SELECT * FROM bathroom WHERE userId = '$userId' ORDER BY bathroomProjectId DESC");
-    
-    return $req;   
+        $db = $this->dbConnect();
+        $userId = $_SESSION['userId'] ;
+        $req = $db->query("SELECT * FROM bathroom WHERE userId = '$userId' ORDER BY bathroomProjectId DESC");
+
+        return $req;   
 }
 
 

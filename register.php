@@ -15,18 +15,17 @@ if(isset($_POST["userName"]) && isset($_POST["userPassword"])){
 	//Nous vérifions si le mot de passe utilisé correspond bien à ce hash à l'aide de password_verify :
 	$correctPassword = password_verify($_POST["userPassword"], $hash);
 	
-	if($_POST["userPassword"] ==  $hash ) {
+	if($correctPassword) {
 		session_start();
         $_SESSION['userId'] = $result['userId'];
         $_SESSION['userName'] = $_POST["userName"];
-		header('Location: ../index.php');
         
-	}else{
+		header('Location: index.php');
+        
+	} else {
 		//Sinon nous signalons une erreur d'identifiant ou de mot de passe
-		echo "login/password incorrect<br>";
-        echo $_POST["userName"] . "<br>" ;
-        echo $_POST["userPassword"] ."<br>";
-        echo $hash;
+		echo "Utilisateur ou mot de passe incorrect<br>";
+
 	}
 }
 ?>

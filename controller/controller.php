@@ -10,6 +10,7 @@ require_once('model/ShowerManager.php');
 require_once('model/ToiletsManager.php');
 require_once('model/SinkManager.php');
 require_once('model/BathtubManager.php');
+require_once('model/BasketManager.php');
 
 //Tous les projet Room et Bath
 
@@ -24,6 +25,7 @@ function listProjectsBathroom(){
     $bath = $bathroomManager->getProjectsBath();   
     require('view/projectsBath.php');
 }
+
 
 //Obtenir un projet room en fonction de son Id~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getOneRoom(){
@@ -101,7 +103,6 @@ function singleSink(){
 }
 
 
-
 //Add bathroom Project~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function addBath($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $bathroomSink, $userId, $bathroomDate){
@@ -149,7 +150,7 @@ function addUser($userName, $userEmail, $userPassword, $userDateInscription){
     }
     
     else{
-        header('Location: index.php?');
+        header('Location: view/connexion.php?');
     }
 }
 
@@ -169,7 +170,7 @@ function testPassword(){
         header('Location: index.php?');
     }
     else{
-        echo 'erreur de mdp ou userName invalide';
+        echo 'Mot de passe ou nom d\'utilisateur invalide';
     }
     
     }
@@ -192,6 +193,7 @@ function affichageDelRoom(){
     require('view/confirmationDelRoom.php');
 }
 
+
 //Supprimer projet bath~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function supprBath(){
     
@@ -207,4 +209,44 @@ function affichageDelBath(){
     
     $sup = $bathroomManager->getProjectBath($_GET['bathroomProjectId']);
     require('view/confirmationDelBath.php');
+}
+
+//Les produits du panier ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function basket(){
+    
+    $basketManager = new BasketManager();   
+    $oneBasket = $basketManager->getOneBasket();  
+    require('view/basket.php');
+}
+
+//Add product basket
+function addBasket($basketProductName, $basketProductPrice, $basketProductQuantity, $basketProductUrlImage, $userId){
+    
+    $basketManager = new BasketManager();
+    
+    $line = $basketManager->addProduct($basketProductName, $basketProductPrice, $basketProductQuantity, $basketProductUrlImage, $userId);
+    
+    if($line === false){
+        die('erreur ajout dans le panier');
+    }
+    
+    else {
+        header('Location:' . $_SERVER['HTTP_REFERER']); 
+    }
+}
+//Supprimer un element du panier
+
+function delBasket(){
+    $basketManager = new BasketManager();
+    $sup = $basketManager->delBasket($_GET['basketProductId']);
+    $affichage = $basketManager->getOneBasket();
+    header('Location: index.php?action=oneBasket');
+}
+
+function deconnexion(){
+    session_start();
+    session_destroy();
+    header('Location: ../connexion.php');
+    exit;
 }

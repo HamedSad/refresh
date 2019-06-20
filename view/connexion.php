@@ -7,7 +7,7 @@
 
     <div class="formAddBath">
         <h1>Connexion</h1>
-        <form action="../model/register.php" method="post">   
+        <form action="../register.php" method="post">   
                       
             <div>
                 <label for="userName">Nom *</label>
@@ -19,12 +19,11 @@
                 <input type="password" id="userPassword" name="userPassword" size="40">
             </div><br>
             
-
             <div>
                 <input type="submit" value="Se connecter">
-            </div>
+            </div><br>
             
-            Pas encore inscrit? <a href="inscription.php">Inscription</a>
+            Pas encore inscrit.e? <a href="inscription.php">Inscription</a>
             
   </form>
 

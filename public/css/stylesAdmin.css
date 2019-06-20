@@ -11,8 +11,6 @@
     color: grey;   
 }
 
-
-
 .newProject{
     position:absolute;
     top:20px;
@@ -46,12 +44,13 @@ img{
 
 /*material*/
 .material{ 
+    padding-left: 3em;
     display: flex;
     flex-direction: row;  
 }
 
 .materialPic{
-    margin: 5em 2em 0 5em;
+    margin: 5em 2em 0 1em;
 }
 
 .materialPic img{
@@ -60,9 +59,14 @@ img{
 }
 
 .infoProduct{
-    margin-top: 20%;
-    font-size: 40px;
+    font-size: 30px;
     text-align: right;
+    padding-top: 5em;
+    text-align: center;
+}
+
+.userId{
+    display: none;
 }
 
 a:link,

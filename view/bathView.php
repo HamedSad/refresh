@@ -2,10 +2,18 @@
 
     $title= "Mon projet " . $projectBath['bathroomProjectName'] ; ?>
     <div class="wrapp">
+        
         <h2>Mon projet</h2>
+        
+        <a href="index.php">Mes projets</a>
+        <a href="index.php?action=oneBasket">Mon panier</a>
+        <a href="disconnection.php">Déconnexion</a>
+        
         <p>Récapitulatif du projet <?= $projectBath['bathroomProjectName'] ;?> </p>
         
         <?= '<a class="btn btn-danger" href="index.php?action=affichageBath&amp;bathroomProjectId=' . $projectBath['bathroomProjectId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>'; ?><br><br>
+        
+        
 
         <?php
             echo 'Superficie de ' . $projectBath['bathroomArea'] . 'm²<br>';

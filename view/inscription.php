@@ -42,10 +42,11 @@
 
             <div>
                 <input type="submit" value="S'inscrire">
-            </div>
-            
-  </form>
-
+            </div><br>
+            Déjà inscrit.e? <a href="connexion.php">Connexion</a> 
+        </form>
+        
+        
     </div>
 <?php $content = ob_get_clean();
 

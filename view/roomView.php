@@ -1,9 +1,14 @@
 <?php ob_start();
 
  $title= "Mon projet " . $projectRoom['roomProjectName'] ; ?>
+
 <div class="wrapp">
     
     <h2>Mon projet</h2>
+    
+    <a href="index.php">Mes projets</a>
+    <a href="index.php?action=oneBasket">Mon panier</a>
+    <a href="disconnection.php">Déconnexion</a>
     
     <?= '<a class="btn btn-danger" href="index.php?action=affichageRoom&amp;roomId=' . $projectRoom['roomId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>'; ?>
     
@@ -20,10 +25,7 @@
         } else {
             echo 'Sol en ' . $projectRoom['groundName'] . '<br><br>';
             }
-
     ?>
-
-    
 
     <h2>Nos recommandations</h2>
 
@@ -74,11 +76,9 @@
             }
         
          ?>
-        </div>
+            </div>
         </div>
     </div>
-
-
     
     <?php $content = ob_get_clean();
 
