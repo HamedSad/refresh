@@ -24,6 +24,7 @@
     width: 10em;
 }
 
+
 /*formBath.php*/
 form{
     padding-top: 6em;
@@ -43,6 +44,9 @@ form{
     padding-top: 2em;
 }
 
+.userId{
+    display: none;
+}
 
 
 /*formRoom.php*/

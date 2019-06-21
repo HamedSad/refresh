@@ -155,7 +155,6 @@ if (isset($_GET['action'])){
         }
     }
     
-    
     elseif($_GET['action'] == 'deconnexion'){
         deconnexion();
     }
@@ -163,9 +162,8 @@ if (isset($_GET['action'])){
 }
 
 else {
-    
-    echo listProjectsRoom();
-    echo listProjectsBathroom();
+        echo listProjectsRoom();
+        echo listProjectsBathroom();
 }
 
 

@@ -1,7 +1,5 @@
 <?php
 
-//require('model/model.php');
-
 require_once('model/RoomManager.php');
 require_once('model/BathroomManager.php');
 require_once('model/PaintManager.php');
@@ -12,22 +10,14 @@ require_once('model/SinkManager.php');
 require_once('model/BathtubManager.php');
 require_once('model/BasketManager.php');
 
-//Tous les projet Room et Bath
-
+//Projects Room ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function listProjectsRoom(){
     $roomManager = new RoomManager();      
     $room = $roomManager->getProjectsRoom();      
     require('view/projectsRoom.php');
 }
 
-function listProjectsBathroom(){
-    $bathroomManager = new BathroomManager();    
-    $bath = $bathroomManager->getProjectsBath();   
-    require('view/projectsBath.php');
-}
-
-
-//Obtenir un projet room en fonction de son Id~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Get room projet by Id
 function getOneRoom(){
     
     $roomManager = new RoomManager();    
@@ -38,7 +28,48 @@ function getOneRoom(){
     require('view/roomView.php');
 }
 
-//Obtenir un projet Bathroom en fonction de son Id~~~~~~~~~~~~~~~~~~~~~~
+//Add room project
+function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate){
+    
+    $roomManager = new RoomManager();
+    
+    $line = $roomManager->addRoomProject($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate);
+    
+    if($line === false){
+        die('erreur addRoom');
+    }
+    
+    else{
+        header('Location: view/confirmation.php?');
+    }
+    
+}
+
+//Del room project
+function supprRoom(){
+    
+    $roomManager = new RoomManager();  
+    
+    $sup = $roomManager->delProjectRoom($_GET['roomId']);
+    header('Location: index.php');        
+}
+
+function affichageDelRoom(){
+    
+    $roomManager = new RoomManager();
+    
+    $sup = $roomManager->getProjectRoom($_GET['roomId']);
+    require('view/confirmationDelRoom.php');
+}
+
+//Projects bathroom~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function listProjectsBathroom(){
+    $bathroomManager = new BathroomManager();    
+    $bath = $bathroomManager->getProjectsBath();   
+    require('view/projectsBath.php');
+}
+
+//Get project bathroom by Id
 function getOneBath(){
     
     $bathroomManager = new BathroomManager();
@@ -57,6 +88,40 @@ function getOneBath(){
     require('view/bathView.php');
 }
 
+//Add project bathroom
+function addBath($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $bathroomSink, $userId, $bathroomDate){
+    
+    $bathroomManager = new BathroomManager();
+    
+    $line = $bathroomManager->addBathroomProject($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $bathroomSink, $userId, $bathroomDate);
+    
+    if($line === false){
+        die('erreur addBath');
+    }
+    
+    else{
+        header('Location: view/confirmation.php?');
+    }
+}
+
+//Del project bathroom
+function supprBath(){
+    
+    $bathroomManager = new BathroomManager();
+    
+    $sup = $bathroomManager->delProjectBath($_GET['bathroomProjectId']);   
+    header('Location: index.php');
+}
+
+function affichageDelBath(){
+    
+    $bathroomManager = new BathroomManager();
+    
+    $sup = $bathroomManager->getProjectBath($_GET['bathroomProjectId']);
+    require('view/confirmationDelBath.php');
+}
+
+//Materials~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function singlePaint(){
     
     $paintManager = new PaintManager();   
@@ -103,42 +168,7 @@ function singleSink(){
 }
 
 
-//Add bathroom Project~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-function addBath($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $bathroomSink, $userId, $bathroomDate){
-    
-    $bathroomManager = new BathroomManager();
-    
-    $line = $bathroomManager->addBathroomProject($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $bathroomSink, $userId, $bathroomDate);
-    
-    if($line === false){
-        die('erreur addBath');
-    }
-    
-    else{
-        header('Location: view/confirmation.php?');
-    }
-}
-
-//Add room project~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate){
-    
-    $roomManager = new RoomManager();
-    
-    $line = $roomManager->addRoomProject($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate);
-    
-    if($line === false){
-        die('erreur addRoom');
-    }
-    
-    else{
-        header('Location: view/confirmation.php?');
-    }
-    
-}
-
-//Add user~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//Add user~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function addUser($userName, $userEmail, $userPassword, $userDateInscription){
     
     $userManager = new UserManager();
@@ -154,67 +184,8 @@ function addUser($userName, $userEmail, $userPassword, $userDateInscription){
     }
 }
 
-//Verify user password~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function testPassword(){
-    
-    $userManager = new UserManager();
-    
-    $userPass = $userManager->verifyPassword($_GET['userName']);
-    
-    if(isset($_POST["userName"]) && isset($_POST["userPassword"])){
-    
-    $hash = $password;
-    $correctPassword = password_verify($_POST["userName"], $hash);
-        
-    if($correctPassword){
-        header('Location: index.php?');
-    }
-    else{
-        echo 'Mot de passe ou nom d\'utilisateur invalide';
-    }
-    
-    }
-}
-
-//Supprimer projet room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function supprRoom(){
-    
-    $roomManager = new RoomManager();  
-    
-    $sup = $roomManager->delProjectRoom($_GET['roomId']);
-    header('Location: index.php');        
-}
-
-function affichageDelRoom(){
-    
-    $roomManager = new RoomManager();
-    
-    $sup = $roomManager->getProjectRoom($_GET['roomId']);
-    require('view/confirmationDelRoom.php');
-}
-
-
-//Supprimer projet bath~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function supprBath(){
-    
-    $bathroomManager = new BathroomManager();
-    
-    $sup = $bathroomManager->delProjectBath($_GET['bathroomProjectId']);   
-    header('Location: index.php');
-}
-
-function affichageDelBath(){
-    
-    $bathroomManager = new BathroomManager();
-    
-    $sup = $bathroomManager->getProjectBath($_GET['bathroomProjectId']);
-    require('view/confirmationDelBath.php');
-}
-
-//Les produits du panier ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-function basket(){
-    
+//Basket ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function basket(){   
     $basketManager = new BasketManager();   
     $oneBasket = $basketManager->getOneBasket();  
     require('view/basket.php');
@@ -235,8 +206,8 @@ function addBasket($basketProductName, $basketProductPrice, $basketProductQuanti
         header('Location:' . $_SERVER['HTTP_REFERER']); 
     }
 }
-//Supprimer un element du panier
 
+//Del product basket
 function delBasket(){
     $basketManager = new BasketManager();
     $sup = $basketManager->delBasket($_GET['basketProductId']);
@@ -244,6 +215,8 @@ function delBasket(){
     header('Location: index.php?action=oneBasket');
 }
 
+
+//Disconnection~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function deconnexion(){
     session_start();
     session_destroy();

@@ -2,17 +2,15 @@
 
 $pdo = new PDO(
     'mysql:host=localhost;dbname=refresh', 'root', '');
-	
-//Nous vérifions que l'utilisateur a bien envoyé les informations demandées 
+
 if(isset($_POST["userName"]) && isset($_POST["userPassword"])){
-	//Nous allons demander le hash pour cet utilisateur à notre base de données :
+
 	$query = $pdo->prepare('SELECT * FROM user WHERE userName = :userName');
 	$query->bindParam(':userName', $_POST["userName"]);
 	$query->execute();
 	$result = $query->fetch();
 	$hash = $result[3];
 	
-	//Nous vérifions si le mot de passe utilisé correspond bien à ce hash à l'aide de password_verify :
 	$correctPassword = password_verify($_POST["userPassword"], $hash);
 	
 	if($correctPassword) {
@@ -23,9 +21,6 @@ if(isset($_POST["userName"]) && isset($_POST["userPassword"])){
 		header('Location: index.php');
         
 	} else {
-		//Sinon nous signalons une erreur d'identifiant ou de mot de passe
-		echo "Utilisateur ou mot de passe incorrect<br>";
-
+		echo "Utilisateur ou mot de passe incorrect<br>" . '<img src="https://cdn.dribbble.com/users/3968/screenshots/2207543/search_icon_animation.gif">';
 	}
 }
-?>

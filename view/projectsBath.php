@@ -7,7 +7,7 @@
         <div class="roomProject">
         <?php 
 
-            echo "<br><br><h3>Mes projets salle de bain : </h3><br>"; 
+            echo "<br><br><h3>Mes projets salle de bain : </h3>"; 
 
             echo '<ul>';
 

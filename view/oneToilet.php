@@ -2,13 +2,13 @@
 
     $title= $oneToilet['toiletsName'] ; ?>
 
+<a href="index.php">Mes projets</a>
+<a href="index.php?action=oneBasket">Mon panier</a>
+<a href="disconnection.php">Déconnexion</a>
+
 <div class="material">
     
     <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Retour</a>
-    
-    <a href="index.php">Mes projets</a>
-    <a href="index.php?action=oneBasket">Mon panier</a>
-    <a href="disconnection.php">Déconnexion</a>
     
     <div class="materialPic">
         <img src="<?= $oneToilet['toiletsUrlImage'] ;?>">
@@ -17,38 +17,34 @@
     <div class="infoProduct">
         <?= $oneToilet['toiletsName'] . '<br><br>';?>
         <?= $oneToilet['toiletsPrice'] . '€' ;?>
-    
-    
+     
         <form action="index.php?action=addBasket&amp" method = post>
 
-                <div>        
-                    <input type="hidden" id="basketProductName" name="basketProductName"  value="<?= $oneToilet['toiletsName']; ?>" required><br><br>
-                </div>
+            <div>        
+                <input type="hidden" id="basketProductName" name="basketProductName" value="<?= $oneToilet['toiletsName']; ?>">
+            </div>
 
-                <div>
+            <div>
+                <input type="hidden" id="basketProductPrice" name="basketProductPrice" value="<?= $oneToilet['toiletsPrice']; ?>"><br>
+            </div>
 
-                    <input type="text" id="basketProductPrice" name="basketProductPrice" value="<?= $oneToilet['toiletsPrice']; ?>" required><br><br>
-                </div>
+            <div>
+                <label for="basketProductQuantity">Quantité</label>
+                <input type="text" id="basketProductQuantity" name="basketProductQuantity" size="1"><br>
+            </div>
 
-                <div>
-                    <label for="basketProductQuantity">Quantité</label>
-                    <input type="number" id="basketProductQuantity" name="basketProductQuantity" value="<?= $oneToilet['toiletsPrice'] . '€' ;?>" required><br><br>
-                </div>
+            <div>          
+                <input type="hidden" id="basketProductUrlImage" name="basketProductUrlImage" value="<?= $oneToilet['toiletsUrlImage'] ;?>"><br>
+            </div>
 
-                <div>          
-                    <input type="hidden" id="basketProductUrlImage" name="basketProductUrlImage" value="<?= $oneToilet['toiletsUrlImage'] ;?>" required><br><br>
-                </div>
+            <div class="userId">
+                <input type="text" id="userId" name="userId" value="
+                <?php echo $_SESSION['userId']; ?>" >
+            </div>
 
-                <div class="userId">
-                    <input type="text" id="userId" name="userId" value="
-                    <?php echo $_SESSION['userId']; ?>" >
-                </div>
-
-
-                <div>
-                    <input type="submit" value="Ajouter au panier">
-                </div>
-
+            <div>
+                <input type="submit" value="Ajouter au panier" onclick="return confirm('Valider l\'ajout de <?= $oneToilet['toiletsName'] ;?> au panier?')">
+            </div>
 
         </form>
     </div>    

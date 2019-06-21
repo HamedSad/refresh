@@ -2,13 +2,11 @@
 
     $title= $oneSink['sinkName'] ; ?>
 
-<div class="material">
-    
-    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Retour</a>
+<a href="index.php">Mes projets</a>
+<a href="index.php?action=oneBasket">Mon panier</a>
+<a href="disconnection.php">Déconnexion</a>
 
-    <a href="index.php">Mes projets</a>
-    <a href="index.php?action=oneBasket">Mon panier</a>
-    <a href="disconnection.php">Déconnexion</a>
+<div class="material">
     
     <div class="materialPic">
         <img src="<?= $oneSink['sinkUrlImage'] ;?>">
@@ -17,6 +15,37 @@
     <div class="infoProduct">
         <?= $oneSink['sinkName'] . '<br><br>';?>
         <?= $oneSink['sinkPrice'] . '€' ;?>
+        
+        <form action="index.php?action=addBasket&amp" method = post>
+
+            <div>        
+                <input type="hidden" id="basketProductName" name="basketProductName" value="<?= $oneSink['sinkName']; ?>">
+            </div>
+
+            <div>
+                <input type="hidden" id="basketProductPrice" name="basketProductPrice" value="<?= $oneSink['sinkPrice']; ?>"><br>
+            </div>
+
+            <div>
+                <label for="basketProductQuantity">Quantité</label>
+                <input type="text" id="basketProductQuantity" name="basketProductQuantity" size="1"><br>
+            </div>
+
+            <div>          
+                <input type="hidden" id="basketProductUrlImage" name="basketProductUrlImage" value="<?= $oneSink['sinkUrlImage'] ;?>"><br>
+            </div>
+
+            <div class="userId">
+                <input type="text" id="userId" name="userId" value="
+                <?php echo $_SESSION['userId']; ?>" >
+            </div>
+
+            <div>
+                <input type="submit" value="Ajouter au panier" onclick="return confirm('Valider l\'ajout de <?= $oneSink['sinkName'] ;?> au panier?')">
+            </div>
+
+        </form>
+        
     </div>
     
 </div>
