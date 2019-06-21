@@ -4,19 +4,18 @@
     
     $title= "Connexion"; ?>
 
-
     <div class="formAddBath">
         <h1>Connexion</h1>
         <form action="../register.php" method="post">   
                       
             <div>
                 <label for="userName">Nom *</label>
-                <input type="text" id="userName" name="userName" size="40"><br><br>
+                <input type="text" id="userName" name="userName" size="40" required><br><br>
             </div>  
             
             <div>
                 <label for="userPassword">Mot de passe *</label>
-                <input type="password" id="userPassword" name="userPassword" size="40">
+                <input type="password" id="userPassword" name="userPassword" size="40" required>
             </div><br>
             
             <div>

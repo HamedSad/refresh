@@ -37,9 +37,6 @@ if (isset($_GET['action'])){
 
     elseif($_GET['action'] == 'addUser'){
         
-        //Ajouter les messages d'erreur à chaque input
-        //Rester sur la même page si message d'erreur
-        
         $userNameError = $userEmailError = $userPasswordError = $userPassword2Error = $userPassword3Error =  "";
         
         $isSucces = true;
@@ -157,8 +154,7 @@ if (isset($_GET['action'])){
     
     elseif($_GET['action'] == 'deconnexion'){
         deconnexion();
-    }
-    
+    } 
 }
 
 else {
