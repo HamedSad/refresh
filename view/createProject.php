@@ -6,10 +6,10 @@
 
 <div class="question">
     
-    <a href="index.php">Mes projets</a>
-    <a href="index.php?action=oneBasket">Mon panier</a>
-    <a href="index.php?action=favourites">Mes favoris</a>
-    <a href="disconnection.php">Déconnexion</a>
+    <a href="../index.php">Mes projets</a>
+    <a href="../index.php?action=oneBasket">Mon panier</a>
+    <a href="../index.php?action=favourites">Mes favoris</a>
+    <a href="../disconnection.php">Déconnexion</a>
     
     <h2>Quelle pièce est à rénover?</h2>
     

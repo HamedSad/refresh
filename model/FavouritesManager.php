@@ -78,25 +78,28 @@ class FavouritesManager extends Manager {
         return $sup;
     }
     
-    //    public function checkFavouriteRoom(){
+        
+    
+    
+//    public function checkFavouriteRoom(){
 //        
 //        $db = $this->dbConnect();
 //        
-//        $new = $db->prepare("SELECT * FROM favouritesroom WHERE roomProjectId = ? AND userId = '$userId'");
+//        $check = $db->prepare("SELECT * FROM favouritesroom
+//        INNER JOIN room
+//        ON roomProjectId = roomId
+//        WHERE favouritesroom.userId = '$userId'");
 //        
-//        $new->execute(array($roomProjectId, $userId));
+//        $check->execute(array($userId));
 //        
-//        if($new->rowCount() == 1){
-//            
-//            
-//        } else {
-//            
-//            
-//        }
+//           
 //        
+//        $testRoom = $db->prepare("SELECT * FROM favouritesroom WHERE roomProjectId = ? AND userId = '$userId'");
 //        
+//        $testRoom->execute(array($roomProjectId, $userId));
 //        
+//        return $testRoom;
+//  
 //    }
-    
-    
+//      
 }

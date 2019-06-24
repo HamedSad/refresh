@@ -17,6 +17,19 @@
     right:20px;  
 }
 
+/*connexion*/
+.formAddBath{
+    margin-right: 15%;
+    border: solid red;
+}
+
+.formAddBath h1{
+    text-align: center;
+    color: grey;
+    padding-top: 2em;
+}
+
+
 /*createProject*/
 
 .question{

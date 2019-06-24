@@ -16,7 +16,9 @@
             <ul>
                 
             <h3>Projets Chambre</h3>
-            <?php             
+            <?php    
+                
+                
                 while($favouritesRoom = $myFavouritesRoom->fetch()){                    
                     echo '<li>';
                         echo '<a href="index.php?action=projectRoom&amp;roomId=' . $favouritesRoom['roomProjectId'] . '">'. $favouritesRoom['favouriteRoomName'] . '</a>';

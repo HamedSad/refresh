@@ -1,6 +1,6 @@
 <?php ob_start();
 
-    session_start();
+    //session_start();
     
     $title= "Connexion"; ?>
 
@@ -24,7 +24,7 @@
             
             Pas encore inscrit.e? <a href="inscription.php">Inscription</a>
             
-  </form>
+        </form>
 
     </div>
 <?php $content = ob_get_clean();

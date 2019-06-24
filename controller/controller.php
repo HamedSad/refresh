@@ -225,6 +225,13 @@ function favourites(){
     require('view/favourites.php');
 }
 
+function testFav(){
+    $favouriteManager = new FavouritesManager();
+    
+    $checkFav = $favouriteManager->checkFavouriteRoom();
+    require('view/roomView.php');
+}
+
 function addFavouriteRoom($favouriteRoomName, $userId, $roomProjectId){
     
     $favouriteManager = new FavouritesManager();
