@@ -27,6 +27,20 @@ if (isset($_GET['action'])){
         addBasket($_POST['basketProductName'], $_POST['basketProductPrice'], $_POST['basketProductQuantity'], $_POST['basketProductUrlImage'], $_POST['userId']);
     }
     
+    elseif($_GET['action'] == 'favourites'){
+        favourites();
+    }
+    
+     elseif($_GET['action'] == 'addFavouriteRoom'){
+         
+        addFavouriteRoom($_POST['favouriteRoomName'], $_POST['userId'], $_POST['roomProjectId']);
+    }
+    
+    elseif($_GET['action'] == 'addFavouriteBath'){
+        addFavouriteBath($_POST['favouriteBathName'], $_POST['userId'], $_POST['bathProjectId']);
+    }
+    
+    
     elseif($_GET['action'] == 'addBath'){
         addBath($_POST['bathroomProjectName'], $_POST['bathroomArea'], $_POST['bathroomGround'], $_POST['bathroomHeight'], $_POST['bathroomWC'], $_POST['bathroomShower'], $_POST['bathroomBath'], $_POST['bathroomSink'], $_POST['userId'], $_POST['bathroomDate'] );
     }

@@ -7,13 +7,36 @@
         
         <a href="index.php">Mes projets</a>
         <a href="index.php?action=oneBasket">Mon panier</a>
+        <a href="index.php?action=favourites">Mes favoris</a>
         <a href="disconnection.php">Déconnexion</a>
         
-        <p>Récapitulatif du projet <?= $projectBath['bathroomProjectName'] ;?> </p>
+        
         
         <?= '<a class="btn btn-danger" href="index.php?action=affichageBath&amp;bathroomProjectId=' . $projectBath['bathroomProjectId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>'; ?><br><br>
+
         
+        <form action="index.php?action=addFavouriteBath&amp" method = post>
+            
+            <div>        
+                <input type="hidden" id="favouriteBathName" name="favouriteBathName"  value="<?= $projectBath['bathroomProjectName'] ?>">
+            </div>
+            
+            <div>
+                <input type="hidden" id="bathProjectId" name="bathProjectId"  value="<?= $projectBath['bathroomProjectId'] ?>">
+            </div>
+                        
+            <div class="userId">
+                <input type="text" id="userId" name="userId" value="
+                <?php echo $_SESSION['userId']; ?>" >
+            </div>    
+            
+            <div>
+                <input type="submit" value="Ajouter aux favoris">      
+            </div>
+           
+        </form>  
         
+        <br><p>Récapitulatif du projet <?= $projectBath['bathroomProjectName'] ;?> </p>
 
         <?php
             echo 'Superficie de ' . $projectBath['bathroomArea'] . 'm²<br>';

@@ -8,12 +8,35 @@
     
     <a href="index.php">Mes projets</a>
     <a href="index.php?action=oneBasket">Mon panier</a>
+    <a href="index.php?action=favourites">Mes favoris</a>
     <a href="disconnection.php">Déconnexion</a>
     
     <?= '<a class="btn btn-danger" href="index.php?action=affichageRoom&amp;roomId=' . $projectRoom['roomId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>'; ?>
     
+    <form action="index.php?action=addFavouriteRoom&amp" method = post>
+            
+            <div>
+                <input type="hidden" id="favouriteRoomName" name="favouriteRoomName"  value="<?= $projectRoom['roomProjectName'] ?>">
+            </div>
+            
+            <div>
+                <input type="hidden" id="roomProjectId" name="roomProjectId"  value="<?= $projectRoom['roomId'] ?>">
+            </div>
+                        
+            <div class="userId">
+                <input type="text" id="userId" name="userId" value="
+                <?php echo $_SESSION['userId']; ?>" >
+            </div>    
+            
+            <div>
+                <input type="submit" value="Ajouter aux favoris">      
+            </div>
+           
+        </form>    
     
-    <p>Récapitulatif du projet <?= $projectRoom['roomProjectName'] ;?> </p>  
+    
+    <br><p>Récapitulatif du projet <?= $projectRoom['roomProjectName'] ;?> </p> 
+    
 
     <?php 
 

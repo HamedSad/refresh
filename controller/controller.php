@@ -9,6 +9,7 @@ require_once('model/ToiletsManager.php');
 require_once('model/SinkManager.php');
 require_once('model/BathtubManager.php');
 require_once('model/BasketManager.php');
+require_once('model/FavouritesManager.php');
 
 //Projects Room ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function listProjectsRoom(){
@@ -203,7 +204,7 @@ function addBasket($basketProductName, $basketProductPrice, $basketProductQuanti
     }
     
     else {
-        header('Location:' . $_SERVER['HTTP_REFERER']); 
+        header('Location: index.php?action=addFavouriteRoom'); 
     }
 }
 
@@ -213,6 +214,48 @@ function delBasket(){
     $sup = $basketManager->delBasket($_GET['basketProductId']);
     $affichage = $basketManager->getOneBasket();
     header('Location: index.php?action=oneBasket');
+}
+
+//Favourites~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function favourites(){
+    $favouritesManager = new FavouritesManager();
+    $myFavouritesRoom = $favouritesManager->getFavouritesRoom();
+    $myFavouritesBath = $favouritesManager->getFavouritesBath();
+    require('view/favourites.php');
+}
+
+function addFavouriteRoom($favouriteRoomName, $userId, $roomProjectId){
+    
+    $favouriteManager = new FavouritesManager();
+    
+    $line = $favouriteManager->addFavouritesRoom($favouriteRoomName, $userId, $roomProjectId);
+ 
+    if($line === false){
+        die('erreur ajout en favoris');
+    }
+    
+    else {
+        header('Location:' . $_SERVER['HTTP_REFERER']); 
+       
+    } 
+    
+}
+
+
+function addFavouriteBath($favouriteBathName, $userId, $bathProjectId){
+    
+    $favouriteManager = new FavouritesManager();
+    
+    $line = $favouriteManager->addFavouritesBath($favouriteBathName, $userId, $bathProjectId);
+ 
+    if($line === false){
+        die('erreur ajout en favoris');
+    }
+    
+    else {
+        header('Location:' . $_SERVER['HTTP_REFERER']); 
+    } 
+    
 }
 
 
