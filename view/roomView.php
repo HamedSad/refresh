@@ -4,12 +4,12 @@
 
 <div class="wrapp">
     
-    <h2>Mon projet</h2>
-    
     <a href="index.php">Mes projets</a>
     <a href="index.php?action=oneBasket">Mon panier</a>
     <a href="index.php?action=favourites">Mes favoris</a>
     <a href="disconnection.php">Déconnexion</a>
+    
+    <h2>Mon projet</h2>
     
     <?= '<a class="btn btn-danger" href="index.php?action=affichageRoom&amp;roomId=' . $projectRoom['roomId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>'; ?>
     
@@ -29,11 +29,10 @@
             </div>    
             
             <div>
-                <input type="submit" value="Ajouter aux favoris">      
+                <input class="btn btn-warning" type="submit" value="Ajouter aux favoris">      
             </div>
            
-        </form>    
-    
+    </form> 
     
     <br><p>Récapitulatif du projet <?= $projectRoom['roomProjectName'] ;?> </p> 
     

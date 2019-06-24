@@ -1,7 +1,5 @@
 <?php
 
-require_once('model/RoomManager.php');
-require_once('model/BathroomManager.php');
 require_once('model/PaintManager.php');
 require_once('model/UserManager.php');
 require_once('model/ShowerManager.php');
@@ -10,18 +8,24 @@ require_once('model/SinkManager.php');
 require_once('model/BathtubManager.php');
 require_once('model/BasketManager.php');
 require_once('model/FavouritesManager.php');
+require_once('model/ProjectsManager.php');
 
-//Projects Room ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function listProjectsRoom(){
-    $roomManager = new RoomManager();      
-    $room = $roomManager->getProjectsRoom();      
-    require('view/projectsRoom.php');
+//Projects~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function listProjects(){
+    $projectsManager = new ProjectsManager();
+    
+    $bath = $projectsManager->getProjectsBath();
+    $room = $projectsManager->getProjectsRoom();
+    require('view/projects.php');
+    
 }
+
 
 //Get room projet by Id
 function getOneRoom(){
     
-    $roomManager = new RoomManager();    
+    $roomManager = new ProjectsManager();    
     $paintManager = new PaintManager();  
     
     $projectRoom = $roomManager->getProjectRoom($_GET['roomId']);
@@ -32,7 +36,7 @@ function getOneRoom(){
 //Add room project
 function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate){
     
-    $roomManager = new RoomManager();
+    $roomManager = new ProjectsManager();
     
     $line = $roomManager->addRoomProject($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate);
     
@@ -49,7 +53,7 @@ function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId,
 //Del room project
 function supprRoom(){
     
-    $roomManager = new RoomManager();  
+    $roomManager = new ProjectsManager();  
     
     $sup = $roomManager->delProjectRoom($_GET['roomId']);
     header('Location: index.php');        
@@ -57,23 +61,18 @@ function supprRoom(){
 
 function affichageDelRoom(){
     
-    $roomManager = new RoomManager();
+    $roomManager = new ProjectsManager();
     
     $sup = $roomManager->getProjectRoom($_GET['roomId']);
     require('view/confirmationDelRoom.php');
 }
 
 //Projects bathroom~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function listProjectsBathroom(){
-    $bathroomManager = new BathroomManager();    
-    $bath = $bathroomManager->getProjectsBath();   
-    require('view/projectsBath.php');
-}
 
 //Get project bathroom by Id
 function getOneBath(){
     
-    $bathroomManager = new BathroomManager();
+    $bathroomManager = new ProjectsManager();
     $paintManager = new PaintManager();
     $toiletsManager = new ToiletsManager();
     $showerManager = new ShowerManager();
@@ -92,7 +91,7 @@ function getOneBath(){
 //Add project bathroom
 function addBath($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $bathroomSink, $userId, $bathroomDate){
     
-    $bathroomManager = new BathroomManager();
+    $bathroomManager = new ProjectsManager();
     
     $line = $bathroomManager->addBathroomProject($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $bathroomSink, $userId, $bathroomDate);
     
@@ -108,7 +107,7 @@ function addBath($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroom
 //Del project bathroom
 function supprBath(){
     
-    $bathroomManager = new BathroomManager();
+    $bathroomManager = new ProjectsManager();
     
     $sup = $bathroomManager->delProjectBath($_GET['bathroomProjectId']);   
     header('Location: index.php');
@@ -116,7 +115,7 @@ function supprBath(){
 
 function affichageDelBath(){
     
-    $bathroomManager = new BathroomManager();
+    $bathroomManager = new ProjectsManager();
     
     $sup = $bathroomManager->getProjectBath($_GET['bathroomProjectId']);
     require('view/confirmationDelBath.php');
@@ -217,10 +216,12 @@ function delBasket(){
 }
 
 //Favourites~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 function favourites(){
     $favouritesManager = new FavouritesManager();
-    $myFavouritesRoom = $favouritesManager->getFavouritesRoom();
+    //$myFavouritesRoom = $favouritesManager->getFavouritesRoom();
     $myFavouritesBath = $favouritesManager->getFavouritesBath();
+    $myFavouritesRoom = $favouritesManager->getFavouritesRoom();
     require('view/favourites.php');
 }
 
@@ -237,8 +238,7 @@ function addFavouriteRoom($favouriteRoomName, $userId, $roomProjectId){
     else {
         header('Location:' . $_SERVER['HTTP_REFERER']); 
        
-    } 
-    
+    }  
 }
 
 
@@ -254,7 +254,20 @@ function addFavouriteBath($favouriteBathName, $userId, $bathProjectId){
     
     else {
         header('Location:' . $_SERVER['HTTP_REFERER']); 
-    } 
+    }   
+}
+
+function delFavouriteRoom(){
+    $favourite = new FavouritesManager();
+    $sup = $favourite->delFavouritesRoom($_GET['favouriteRoomId']);
+    header('Location: index.php?action=favourites');
+    
+}
+
+function delFavouriteBath(){
+    $favourite = new FavouritesManager();
+    $sup = $favourite->delFavouritesBath($_GET['favouriteBathId']);
+    header('Location: index.php?action=favourites');
     
 }
 

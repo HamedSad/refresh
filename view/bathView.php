@@ -31,7 +31,7 @@
             </div>    
             
             <div>
-                <input type="submit" value="Ajouter aux favoris">      
+                <input class="btn btn-warning" type="submit" value="Ajouter aux favoris">      
             </div>
            
         </form>  

@@ -4,6 +4,18 @@ require_once("model/Manager.php");
 
 class FavouritesManager extends Manager {
     
+//    public function getFavouritesRoom(){
+//        
+//        $db = $this->dbConnect();
+//        $userId = $_SESSION['userId'] ;
+//        $req = $db->query("SELECT DISTINCT * FROM favouritesroom
+//        INNER JOIN room
+//        ON roomProjectId = roomId
+//        WHERE favouritesroom.userId = '$userId'
+//        ORDER BY favouriteRoomId ROOM");
+//        return $req;
+//    }
+    
     public function getFavouritesRoom(){
         
         $db = $this->dbConnect();
@@ -50,7 +62,23 @@ class FavouritesManager extends Manager {
 
     }
     
-//    public function checkFavouriteRoom(){
+
+    
+    public function delFavouritesRoom($favouriteRoomId){
+        $db = $this->dbConnect();    
+        $sup = $db->prepare('DELETE FROM favouritesroom WHERE favouriteRoomId = ?');   
+        $sup->execute(array($favouriteRoomId));   
+        return $sup;
+    }
+    
+    public function delFavouritesBath($favouriteBathId){
+        $db = $this->dbConnect();
+        $sup = $db->prepare('DELETE FROM favouritesbath WHERE favouriteBathId = ?');   
+        $sup->execute(array($favouriteBathId));   
+        return $sup;
+    }
+    
+    //    public function checkFavouriteRoom(){
 //        
 //        $db = $this->dbConnect();
 //        
@@ -70,18 +98,5 @@ class FavouritesManager extends Manager {
 //        
 //    }
     
-    public function delFavouritesRoom($favouriteRoomId){
-        $db = $this->dbConnect();    
-        $sup = $db->prepare('DELETE FROM favouritesroom WHERE favouriteRoomId = ?');   
-        $sup->execute(array($favouriteRoomIdId));   
-        return $sup;
-    }
-    
-    public function delFavouritesBath($favouriteBathId){
-        $db = $this->dbConnect();    
-        $sup = $db->prepare('DELETE FROM favouritesbath WHERE favouriteBathId = ?');   
-        $sup->execute(array($favouriteBathId));   
-        return $sup;
-    }
     
 }
