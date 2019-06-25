@@ -14,13 +14,93 @@ if(isset($_SESSION['userId'])){
 
 
     if (isset($_GET['action'])){
+        
+//Project room~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
+        if($_GET['action'] == 'projectRoom'){
+            getOneRoom();   
+            }
+        
+        elseif($_GET['action'] == 'addRoom'){
+            
+            $roomProjectName = test_input($_POST["userName"]);
+            $roomArea = test_input($_POST["roomArea"]);
+            $roomGround = test_input($_POST["roomGround"]);
+            $roomHeight = test_input($_POST["roomHeight"]);
+            $userId = test_input($_POST["userId"]);
+            $roomDate = test_input($_POST["roomDate"]);
+         
+            addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate);
+        }
+        
 
-        if($_GET['action'] == 'oneBasket'){
+        elseif($_GET['action'] == 'updateRoom'){
+            if(isset($_GET['roomId']) && $_GET['roomId'] > 0){
+                updateRoom($_GET['roomId']);
+            }  else {
+                echo 'erreur lors de la mise à jour du projet chambre';
+            }
+        }
+        
+        elseif($_GET['action'] == 'delProjectRoom'){
+            if(isset($_GET['roomId']) && $_GET['roomId'] > 0){
+                supprRoom($_GET['roomId']);
+            } else {
+                echo 'erreur lors de la suppression du projet chambre';
+            }
+        }
+
+        elseif($_GET['action'] == 'affichageRoom'){
+            affichageDelRoom();
+        }
+        
+//Project Bath~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        elseif($_GET['action'] == 'projectBath'){
+            getOneBath(); 
+        }
+
+        elseif($_GET['action'] == 'addBath'){
+            
+            $bathroomProjectName = test_input($_POST["bathroomProjectName"]);
+            $bathroomArea = test_input($_POST["bathroomArea"]);
+            $bathroomGround = test_input($_POST["bathroomGround"]);
+            $bathroomHeight = test_input($_POST["bathroomHeight"]);
+            $bathroomWC = test_input($_POST["bathroomWC"]);
+            $bathroomShower = test_input($_POST["bathroomShower"]);
+            $bathroomBath = test_input($_POST["bathroomBath"]);
+            $bathroomSink = test_input($_POST["bathroomSink"]);
+            $userId = test_input($_POST["userId"]);
+            $bathroomDate = test_input($_POST["bathroomDate"]);
+                            
+            addBath($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath, $bathroomSink, $userId, $bathroomDate );
+        }
+        
+        elseif($_GET['action'] == 'delProjectBath'){
+            if(isset($_GET['bathroomProjectId']) && $_GET['bathroomProjectId'] > 0){
+                supprBath($_GET['bathroomProjectId']);
+            } else {
+                echo 'erreur lors de la suppression du projet salle de bain';
+            }
+        }
+
+        elseif($_GET['action'] == 'affichageBath'){
+            affichageDelBath();
+        }
+        
+//Basket~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     
+        elseif($_GET['action'] == 'oneBasket'){
             basket();
         }
 
         elseif($_GET['action'] == 'addBasket'){
-            addBasket($_POST['basketProductName'], $_POST['basketProductPrice'], $_POST['basketProductQuantity'], $_POST['basketProductUrlImage'], $_POST['userId']);
+            
+            $basketProductName = test_input($_POST['basketProductName']);
+            $basketProductPrice = test_input($_POST['basketProductPrice']);
+            $basketProductQuantity = test_input($_POST['basketProductQuantity']);
+            $basketProductUrlImage = test_input($_POST['basketProductUrlImage']);
+            $userId = test_input($_POST['userId']);
+            
+            addBasket($basketProductName, $basketProductPrice, $basketProductQuantity, $basketProductUrlImage, $userId);
         }
 
         elseif($_GET['action'] == 'delBasket'){
@@ -30,19 +110,22 @@ if(isset($_SESSION['userId'])){
                 echo 'impossible de supprimer l\'article';
             }
         }
-
+        
+        
+//Favourites~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         elseif($_GET['action'] == 'favourites'){
             favourites();
         }
-
-         elseif($_GET['action'] == 'addFavouriteRoom'){
-            addFavouriteRoom($_POST['favouriteRoomName'], $_POST['userId'], $_POST['roomProjectId']);
+        
+        elseif($_GET['action'] == 'addFavouriteRoom'){
+            
+            $favouriteRoomName = test_input($_POST['favouriteRoomName']);
+            $userId = test_input($_POST['userId']);
+            $roomProjectId = test_input($_POST['roomProjectId']);
+            
+            addFavouriteRoom($favouriteRoomName, $userId, $roomProjectId);
         }
-
-        elseif($_GET['action'] == 'addFavouriteBath'){
-            addFavouriteBath($_POST['favouriteBathName'], $_POST['userId'], $_POST['bathProjectId']);
-        }
-
+        
         elseif($_GET['action'] == 'delFavouriteRoom'){
             if(isset($_GET['favouriteRoomId']) && $_GET['favouriteRoomId'] > 0){
                 delFavouriteRoom($_GET['favouriteRoomId']);
@@ -50,8 +133,16 @@ if(isset($_SESSION['userId'])){
                 echo 'erreur lors de la suppression du projet chambre des favoris';
             }
         }
-
-
+        
+        elseif($_GET['action'] == 'addFavouriteBath'){
+            
+            $favouriteBathName = test_input($_POST['favouriteBathName']);
+            $userId = test_input($_POST['userId']);
+            $bathProjectId = test_input($_POST['bathProjectId']);
+            
+            addFavouriteBath($favouriteBathName, $userId, $bathProjectId);
+        }
+        
         elseif($_GET['action'] == 'delFavouriteBath'){
             if(isset($_GET['favouriteBathId']) && $_GET['favouriteBathId'] > 0){
                 delFavouriteBath($_GET['favouriteBathId']);
@@ -60,19 +151,8 @@ if(isset($_SESSION['userId'])){
             }
         }
 
-        elseif($_GET['action'] == 'addBath'){
-            addBath($_POST['bathroomProjectName'], $_POST['bathroomArea'], $_POST['bathroomGround'], $_POST['bathroomHeight'], $_POST['bathroomWC'], $_POST['bathroomShower'], $_POST['bathroomBath'], $_POST['bathroomSink'], $_POST['userId'], $_POST['bathroomDate'] );
-        }
-
-        elseif($_GET['action'] == 'addRoom'){
-            addRoom($_POST['roomProjectName'], $_POST['roomArea'], $_POST['roomGround'], $_POST['roomHeight'], $_POST['userId'], $_POST['roomDate']);
-        }
-
+//User~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         elseif($_GET['action'] == 'addUser'){
-
-            $userNameError = $userEmailError = $userPasswordError = $userPassword2Error = $userPassword3Error =  "";
-
-            $isSucces = true;
 
             $userName = test_input($_POST["userName"]);
             $userEmail = test_input($_POST["userEmail"]);
@@ -93,44 +173,8 @@ if(isset($_SESSION['userId'])){
                 }             
         }
 
-        elseif($_GET['action'] == 'connectUser'){
-            testPassword();        
-        }
-
-        elseif($_GET['action'] == 'projectRoom'){
-            getOneRoom();   
-            }
-
-        elseif($_GET['action'] == 'projectBath'){
-            getOneBath(); 
-        }
-
-        elseif($_GET['action'] == 'delProjectBath'){
-            if(isset($_GET['bathroomProjectId']) && $_GET['bathroomProjectId'] > 0){
-                supprBath($_GET['bathroomProjectId']);
-            } else {
-                echo 'erreur lors de la suppression du projet salle de bain';
-            }
-        }
-
-
-        elseif($_GET['action'] == 'affichageBath'){
-            affichageDelBath();
-        }
-
-
-        elseif($_GET['action'] == 'delProjectRoom'){
-            if(isset($_GET['roomId']) && $_GET['roomId'] > 0){
-                supprRoom($_GET['roomId']);
-            } else {
-                echo 'erreur lors de la suppression du projet chambre';
-            }
-        }
-
-        elseif($_GET['action'] == 'affichageRoom'){
-            affichageDelRoom();
-        }
-
+//Material~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
         elseif($_GET['action'] == 'onePaint'){
             if(isset($_GET['paintId']) && $_GET['paintId'] > 0 ){
             singlePaint();
@@ -187,8 +231,11 @@ if(isset($_SESSION['userId'])){
     
     
 } else  {
-    echo 'Session expirée, vous serez redirigé dans quelques secondes secondes' ;
+    echo 'Session expirée, vous serez redirigé dans quelques secondes<br> 
+    <img src="http://gif.toutimages.com/images/ani_eau/grenouilles/grenouille_015.gif">' ;
     header ("Refresh: 3;URL=view/connexion.php");
+
+    
 }
 
 
