@@ -21,7 +21,6 @@ function listProjects(){
     
 }
 
-
 //Get room projet by Id
 function getOneRoom(){
     
@@ -48,6 +47,31 @@ function addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId,
         header('Location: view/confirmation.php?');
     }
     
+}
+
+function getUpdate(){
+    $roomManager = new ProjectsManager();
+    $projectRoom = $roomManager->getProjectRoom($_GET['roomId']);
+    require('view/updateRoom.php');
+}
+
+function modifyRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $roomId){
+    
+    $roomManager = new ProjectsManager();
+    $roomManager2 = new ProjectsManager();
+    
+    $azerty = $roomManager2->getProjectRoom($_GET['roomId']);
+    $modify = $roomManager->updateRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $roomId);
+    
+    require('view/updateRoom.php');
+    
+    if($modify == false){
+        echo 'erreur dans la modification du projet chambre';
+        
+    }  else  {
+        
+    header('Location: index.php?action=updateRoom');
+    }
 }
 
 //Del room project
@@ -203,7 +227,7 @@ function addBasket($basketProductName, $basketProductPrice, $basketProductQuanti
     }
     
     else {
-        header('Location: index.php?action=addFavouriteRoom'); 
+        header('Location:' . $_SERVER['HTTP_REFERER']); 
     }
 }
 

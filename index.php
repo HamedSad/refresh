@@ -23,7 +23,7 @@ if(isset($_SESSION['userId'])){
         
         elseif($_GET['action'] == 'addRoom'){
             
-            $roomProjectName = test_input($_POST["userName"]);
+            $roomProjectName = test_input($_POST["roomProjectName"]);
             $roomArea = test_input($_POST["roomArea"]);
             $roomGround = test_input($_POST["roomGround"]);
             $roomHeight = test_input($_POST["roomHeight"]);
@@ -33,10 +33,14 @@ if(isset($_SESSION['userId'])){
             addRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate);
         }
         
-
+        elseif($_GET['action'] == 'getUpdate'){
+            getUpdate();
+        }
+        
         elseif($_GET['action'] == 'updateRoom'){
+            
             if(isset($_GET['roomId']) && $_GET['roomId'] > 0){
-                updateRoom($_GET['roomId']);
+                modifyRoom($_GET['roomId'], $_POST['roomProjectName'], $_POST['roomArea'], $_POST['roomGround'], $_POST['roomHeight']);
             }  else {
                 echo 'erreur lors de la mise à jour du projet chambre';
             }

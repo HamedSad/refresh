@@ -4,18 +4,6 @@ require_once("model/Manager.php");
 
 class FavouritesManager extends Manager {
     
-//    public function getFavouritesRoom(){
-//        
-//        $db = $this->dbConnect();
-//        $userId = $_SESSION['userId'] ;
-//        $req = $db->query("SELECT DISTINCT * FROM favouritesroom
-//        INNER JOIN room
-//        ON roomProjectId = roomId
-//        WHERE favouritesroom.userId = '$userId'
-//        ORDER BY favouriteRoomId ROOM");
-//        return $req;
-//    }
-    
     public function getFavouritesRoom(){
         
         $db = $this->dbConnect();

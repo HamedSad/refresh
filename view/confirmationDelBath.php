@@ -15,11 +15,7 @@
         <div style="text-align: center">
             <img src="https://cdn.dribbble.com/users/164889/screenshots/1192618/loading-red-spot.gif" align="center"><br>
         </div>
-        
-        
-        
-        
-    
+
     </div>
 
 

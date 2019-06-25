@@ -42,7 +42,6 @@ class ProjectsManager extends Manager {
         $line = $new->execute(array($bathroomProjectName, $bathroomArea, $bathroomGround, $bathroomHeight, $bathroomWC, $bathroomShower, $bathroomBath,$bathroomSink, $userId));
 
         return $line;
-
     }
 
     public function delProjectBath($bathroomProjectId){
@@ -78,6 +77,16 @@ class ProjectsManager extends Manager {
         return $projectRoom;
     }
 
+    public function updateRoom($roomProjectName, $roomArea, $roomGround, $roomHeight, $roomId){
+        
+        $db = $this->dbConnect();
+        $new = $db->prepare('UPDATE room SET roomProjectName = ?, roomArea = ?, roomGround = ?, roomHeight = ? WHERE roomId = ?');
+        
+        $new->execute(array($roomProjectName, $roomArea, $roomGround, $roomHeight, $roomId));
+        
+        return $new;
+    }
+    
     public function addRoomProject($roomProjectName, $roomArea, $roomGround, $roomHeight, $userId, $roomDate){
         $db = $this->dbConnect();
 

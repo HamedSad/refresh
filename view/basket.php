@@ -26,7 +26,7 @@
                         echo '<img src="' . $product['basketProductUrlImage']. '">';
 
 
-                        echo $product['basketProductName'] . ' ' . $product['basketProductPrice'] . '€  X '. $product['basketProductQuantity'] . ' = ' . $resultat . '€' . '<br>'; 
+                        echo $product['basketProductName'] . ' ' . $product['basketProductPrice'] . '€  X '. $product['basketProductQuantity'] . ' = ' . number_format((float)$resultat, 2, '.', ''). ' €<br>'; 
 
                         $total = $total + $resultat;
                     
@@ -40,8 +40,15 @@
                 }
             ?>
             </ul>
-            
-            <p>Total = <?=$total . '€' ;?></p>
+            <?php 
+                if($total == 0){
+                    echo 'Panier vide';
+                }  else { 
+                    
+                    echo 'Total : ' . number_format((float)$total, 2, ',', ' '). ' €';
+                    }
+            ?>
+           
         </div>
     
     </div>
@@ -49,4 +56,3 @@
 <?php $content = ob_get_clean(); 
 
     require('template.php');
-

@@ -13,6 +13,8 @@
     
     <?= '<a class="btn btn-danger" href="index.php?action=affichageRoom&amp;roomId=' . $projectRoom['roomId'] . ' "><span class="glyphicon glyphicon-remove"></span> Supprimer ce projet </a>'; ?>
     
+    <?= '<a class="btn btn-danger" href="index.php?action=getUpdate&amp;roomId=' . $projectRoom['roomId'] . ' "><span class="glyphicon glyphicon-remove"></span> Modifier ce projet </a>'; ?>
+    
     <form action="index.php?action=addFavouriteRoom&amp" method = post>
             
             <div>
